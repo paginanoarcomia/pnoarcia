@@ -15,7 +15,7 @@
 
 ## Estrutura de páginas
 
-- [ ] Criar `docs/index.html` como página de links/bio;
+- [x] Criar `docs/index.html` como página de links/bio;
 - [x] Criar `docs/captura/index.html` como página de captura;
 - [x] Criar `docs/entrega/index.html` como página de entrega;
 - [ ] Criar `docs/vendas/index.html` como página de vendas;
