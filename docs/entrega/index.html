@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seu material esta pronto</title>
+    <meta
+      name="description"
+      content="Acesse o material gratuito depois de preencher o formulario."
+    >
+    <style>
+      :root {
+        --bg: #f7f3ea;
+        --surface: #fffdf8;
+        --ink: #1e2930;
+        --muted: #5d6b72;
+        --line: #ded6c8;
+        --brand: #0f766e;
+        --brand-dark: #115e59;
+        --accent: #f5b942;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.5;
+      }
+
+      main {
+        min-height: 100vh;
+        padding: 28px 18px;
+        display: grid;
+        place-items: center;
+      }
+
+      .page {
+        width: min(100%, 760px);
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 26px 20px;
+        box-shadow: 0 18px 44px rgba(30, 41, 48, 0.08);
+      }
+
+      .status {
+        display: inline-grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        margin-bottom: 18px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--ink);
+        font-size: 1.35rem;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 8vw, 3.8rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      p {
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .actions {
+        display: grid;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .button,
+      .link {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 48px;
+        border-radius: 8px;
+        color: inherit;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .button {
+        background: var(--brand);
+        color: #ffffff;
+        padding: 13px 18px;
+      }
+
+      .button:hover,
+      .button:focus {
+        background: var(--brand-dark);
+      }
+
+      .link {
+        border: 1px solid var(--line);
+        background: #ffffff;
+        padding: 12px 16px;
+      }
+
+      .note {
+        margin-top: 24px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font-size: 0.95rem;
+      }
+
+      @media (min-width: 720px) {
+        main {
+          padding: 48px 28px;
+        }
+
+        .page {
+          padding: 42px;
+        }
+
+        .actions {
+          grid-template-columns: 1fr auto;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="page" aria-labelledby="titulo-entrega">
+        <div class="status" aria-hidden="true">OK</div>
+        <h1 id="titulo-entrega">Seu material esta pronto.</h1>
+        <p>
+          Obrigado pelo cadastro. Acesse o guia gratuito e use o checklist para organizar sua primeira pagina online.
+        </p>
+
+        <div class="actions">
+          <a class="button" href="../assets/guia-exemplo.html">Acessar material gratuito</a>
+          <a class="link" href="../captura/">Voltar para a captura</a>
+        </div>
+
+        <p class="note">
+          Depois, voce pode trocar este material de exemplo pelo seu PDF dentro da pasta <strong>docs/assets/</strong>.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
