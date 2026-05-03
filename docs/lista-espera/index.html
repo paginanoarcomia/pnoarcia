@@ -6,7 +6,7 @@
     <title>Entre na lista de espera</title>
     <meta
       name="description"
-      content="Entre na lista de espera para receber novidades sobre a proxima turma."
+      content="Entre na lista de espera para receber novidades sobre a próxima turma."
     >
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -216,13 +216,13 @@
       <div class="page">
         <section class="intro" aria-labelledby="titulo-lista">
           <p class="eyebrow">Lista de espera</p>
-          <h1 id="titulo-lista">Entre para ser avisado quando abrir a proxima turma.</h1>
+          <h1 id="titulo-lista">Entre para ser avisado quando abrir a próxima turma.</h1>
           <p class="lead">
-            Deixe seus dados para receber o aviso de abertura e os proximos passos do curso Pagina no Ar com IA.
+            Deixe seus dados para receber o aviso de abertura e os próximos passos do curso Página no Ar com IA.
           </p>
 
           <ul class="steps" aria-label="O que acontece depois">
-            <li><span>1</span>Voce entra na lista de interessados.</li>
+            <li><span>1</span>Você entra na lista de interessados.</li>
             <li><span>2</span>Recebe um aviso quando a turma abrir.</li>
             <li><span>3</span>Decide com calma se faz sentido participar.</li>
           </ul>
@@ -230,7 +230,7 @@
 
         <section class="form-panel" aria-labelledby="titulo-formulario">
           <h2 id="titulo-formulario">Entrar na lista</h2>
-          <p>Preencha apenas o necessario para receber o aviso.</p>
+          <p>Preencha apenas o necessário para receber o aviso.</p>
 
           <form id="waitlist-form">
             <label>
@@ -254,7 +254,7 @@
             <p id="form-message" class="notice" role="status" aria-live="polite"></p>
           </form>
 
-          <p class="privacy">Seus dados serao usados apenas para avisar sobre a abertura da turma.</p>
+          <p class="privacy">Seus dados serão usados apenas para avisar sobre a abertura da turma.</p>
         </section>
       </div>
     </main>
@@ -276,7 +276,7 @@
         event.preventDefault();
 
         if (APPS_SCRIPT_URL === "COLE_AQUI_A_URL_DO_WEB_APP") {
-          setMessage("Cole a URL do Web App no arquivo desta pagina antes de testar o envio.", "error");
+          setMessage("Cole a URL do Web App no arquivo desta página antes de testar o envio.", "error");
           return;
         }
 
@@ -299,7 +299,7 @@
           button.disabled = false;
           button.textContent = "Quero entrar na lista";
         } catch (error) {
-          setMessage("Nao foi possivel enviar agora. Confira a URL do Apps Script e tente novamente.", "error");
+          setMessage("Não foi possível enviar agora. Confira a URL do Apps Script e tente novamente.", "error");
           button.disabled = false;
           button.textContent = "Quero entrar na lista";
         }

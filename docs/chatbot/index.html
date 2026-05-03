@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chat de pagina com IA</title>
+    <title>Chat de página com IA</title>
     <meta
       name="description"
-      content="Responda o chat e descubra como criar sua pagina com IA usando ferramentas gratuitas."
+      content="Responda ao chat e descubra como criar sua página com IA usando ferramentas gratuitas."
     >
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -495,9 +495,9 @@
   <body>
     <header class="topbar">
       <div class="topbar-inner">
-        <div class="brand" aria-label="Pagina no Ar com IA">
+        <div class="brand" aria-label="Página no Ar com IA">
           <span class="brand-mark" aria-hidden="true">IA</span>
-          <span>Pagina no Ar com IA</span>
+          <span>Página no Ar com IA</span>
         </div>
         <a class="topbar-link" href="https://paginanoarcomia.github.io/pnoarcia/vendas/">Ver curso</a>
       </div>
@@ -506,20 +506,20 @@
     <main>
       <section class="hero" aria-labelledby="titulo-chatbot">
         <div>
-          <h1 id="titulo-chatbot">Faca sua pagina com IA e coloque no ar rapido.</h1>
+          <h1 id="titulo-chatbot">Faça sua página com IA e coloque no ar rápido.</h1>
           <p class="hero-copy">
-            Responda o chat e veja qual pagina voce deve criar primeiro para vender, captar leads ou divulgar sua oferta.
+            Responda ao chat e veja qual página você deve criar primeiro para vender, captar leads ou divulgar sua oferta.
           </p>
         </div>
       </section>
 
-      <section class="layout" aria-label="Chatbot de pagina com IA">
+      <section class="layout" aria-label="Chatbot de página com IA">
         <div class="chat-panel">
           <div class="chat-head">
             <div class="chat-title-row">
               <div class="chat-title">
-                <strong>Assistente de paginas</strong>
-                <span>Conversa guiada para encontrar seu melhor proximo passo.</span>
+                <strong>Assistente de páginas</strong>
+                <span>Conversa guiada para encontrar seu melhor próximo passo.</span>
               </div>
               <span class="status-pill">Online</span>
             </div>
@@ -541,7 +541,7 @@
             <div class="option-grid" id="option-grid"></div>
             <div class="final-actions" id="final-actions">
               <a class="cta" id="course-link" href="https://paginanoarcomia.github.io/pnoarcia/vendas/">Sim, quero ver o curso</a>
-              <a class="ghost" id="whatsapp-link" href="https://wa.me/5511999999999?text=Ola%2C%20vi%20o%20chat%20da%20Pagina%20no%20Ar%20com%20IA%20e%20quero%20saber%20qual%20pagina%20devo%20criar%20primeiro.">Quero falar no WhatsApp</a>
+              <a class="ghost" id="whatsapp-link" href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20vi%20o%20chat%20da%20P%C3%A1gina%20no%20Ar%20com%20IA%20e%20quero%20saber%20qual%20p%C3%A1gina%20devo%20criar%20primeiro.">Quero falar no WhatsApp</a>
               <a class="ghost" id="class-link" href="https://paginanoarcomia.github.io/pnoarcia/aula-gratuita/">Quero ver uma aula gratuita</a>
             </div>
             <button class="restart" id="restart-button" type="button">Refazer chat</button>
@@ -553,92 +553,92 @@
     <script>
       const SALES_PAGE_URL = "https://paginanoarcomia.github.io/pnoarcia/vendas/";
       const FREE_CLASS_URL = "https://paginanoarcomia.github.io/pnoarcia/aula-gratuita/";
-      const WHATSAPP_URL = "https://wa.me/5511999999999?text=Ola%2C%20vi%20o%20chat%20da%20Pagina%20no%20Ar%20com%20IA%20e%20quero%20saber%20qual%20pagina%20devo%20criar%20primeiro.";
+      const WHATSAPP_URL = "https://wa.me/5511999999999?text=Ol%C3%A1%2C%20vi%20o%20chat%20da%20P%C3%A1gina%20no%20Ar%20com%20IA%20e%20quero%20saber%20qual%20p%C3%A1gina%20devo%20criar%20primeiro.";
 
       const questions = [
         {
           id: "objetivo",
-          text: "Qual e o seu objetivo agora?",
+          text: "Qual é o seu objetivo agora?",
           options: [
-            "Criar uma pagina de vendas",
-            "Criar uma pagina de captura",
-            "Criar uma pagina para bio",
-            "Criar uma pagina de aula gratuita",
-            "Ainda nao sei, quero entender"
+            "Criar uma página de vendas",
+            "Criar uma página de captura",
+            "Criar uma página para bio",
+            "Criar uma página de aula gratuita",
+            "Ainda não sei, quero entender"
           ]
         },
         {
           id: "oferta",
-          text: "Voce ja tem uma oferta ou produto para divulgar?",
+          text: "Você já tem uma oferta ou produto para divulgar?",
           options: [
-            "Sim, ja tenho",
-            "Tenho uma ideia, mas ainda nao lancei",
-            "Ainda estou comecando do zero"
+            "Sim, já tenho",
+            "Tenho uma ideia, mas ainda não lancei",
+            "Ainda estou começando do zero"
           ]
         },
         {
           id: "trava",
-          text: "O que mais te trava hoje para colocar uma pagina no ar?",
+          text: "O que mais te trava hoje para colocar uma página no ar?",
           options: [
-            "Nao sei programar",
-            "Acho tudo muito tecnico",
-            "Nao quero pagar ferramenta cara",
+            "Não sei programar",
+            "Acho tudo muito técnico",
+            "Não quero pagar ferramenta cara",
             "Dependo de outras pessoas",
             "Tenho medo de fazer errado"
           ]
         },
         {
           id: "tentativa",
-          text: "Voce ja tentou criar uma pagina antes?",
+          text: "Você já tentou criar uma página antes?",
           options: [
-            "Sim, mas nao consegui terminar",
+            "Sim, mas não consegui terminar",
             "Sim, mas ficou ruim",
             "Nunca tentei",
-            "Ja consegui, mas quero fazer melhor"
+            "Já consegui, mas quero fazer melhor"
           ]
         },
         {
           id: "primeiraPagina",
-          text: "Que tipo de pagina voce quer colocar no ar primeiro?",
+          text: "Que tipo de página você quer colocar no ar primeiro?",
           options: [
-            "Pagina de vendas",
-            "Pagina de captura de leads",
-            "Pagina de links para bio",
-            "Pagina de lista de espera",
-            "Pagina de aula gratuita"
+            "Página de vendas",
+            "Página de captura de leads",
+            "Página de links para bio",
+            "Página de lista de espera",
+            "Página de aula gratuita"
           ]
         },
         {
           id: "captacao",
-          text: "Voce quer captar contatos nessa pagina?",
+          text: "Você quer captar contatos nessa página?",
           options: [
             "Sim, nome e email",
             "Sim, nome, email e WhatsApp",
-            "Por enquanto so quero divulgar uma oferta",
-            "Ainda nao sei"
+            "Por enquanto só quero divulgar uma oferta",
+            "Ainda não sei"
           ]
         },
         {
           id: "ia",
-          text: "Voce gostaria de alterar textos, cores e secoes usando IA?",
+          text: "Você gostaria de alterar textos, cores e seções usando IA?",
           options: [
             "Sim, isso ajudaria muito",
             "Talvez, quero entender como funciona",
-            "Nao sei mexer com IA ainda"
+            "Não sei mexer com IA ainda"
           ]
         },
         {
           id: "interesse",
-          text: "Se existisse um passo a passo para criar essas paginas com IA e publicar de graca, faria sentido para voce?",
+          text: "Se existisse um passo a passo para criar essas páginas com IA e publicar de graça, faria sentido para você?",
           options: [
             "Sim, quero aprender",
-            "Talvez, depende do preco",
-            "Quero ver o que esta incluso"
+            "Talvez, depende do preço",
+            "Quero ver o que está incluso"
           ]
         },
         {
           id: "conversao",
-          text: "Quer conhecer o passo a passo para criar suas paginas com IA usando ferramentas gratuitas?",
+          text: "Quer conhecer o passo a passo para criar suas páginas com IA usando ferramentas gratuitas?",
           options: [
             "Sim, quero ver o curso",
             "Quero falar no WhatsApp",
@@ -716,7 +716,7 @@
         const percent = Math.round((answered / total) * 100);
         const displayQuestion = Math.min(currentQuestion + 1, total);
 
-        progressLabel.textContent = answered === total ? "Chat concluido" : `Etapa ${displayQuestion} de ${total}`;
+        progressLabel.textContent = answered === total ? "Chat concluído" : `Etapa ${displayQuestion} de ${total}`;
         progressPercent.textContent = `${percent}%`;
         progressBar.style.width = `${percent}%`;
       }
@@ -773,154 +773,163 @@
         });
       }
 
+      function normalizeText(text) {
+        return String(text || "")
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+      }
+
       function getBridgeMessage(question, option) {
+        const optionKey = normalizeText(option);
+
         if (question.id === "objetivo") {
-          if (option.includes("vendas")) {
-            return "Boa. Pagina de vendas costuma travar porque a pessoa sabe que precisa vender, mas nao sabe como organizar promessa, beneficios e chamada para acao sem parecer amador.";
+          if (optionKey.includes("vendas")) {
+            return "Boa. Página de vendas costuma travar porque a pessoa sabe que precisa vender, mas não sabe como organizar promessa, benefícios e chamada para ação sem parecer amador.";
           }
 
-          if (option.includes("captura")) {
-            return "Faz sentido. Capturar contatos e um dos caminhos mais inteligentes para nao depender so de postagem ou sorte no algoritmo.";
+          if (optionKey.includes("captura")) {
+            return "Faz sentido. Capturar contatos é um dos caminhos mais inteligentes para não depender só de postagem ou sorte no algoritmo.";
           }
 
-          if (option.includes("bio")) {
-            return "Perfeito. Uma pagina de bio simples ja tira aquela sensacao de perfil baguncado, com link solto e pouca clareza sobre o proximo passo.";
+          if (optionKey.includes("bio")) {
+            return "Perfeito. Uma página de bio simples já tira aquela sensação de perfil bagunçado, com link solto e pouca clareza sobre o próximo passo.";
           }
 
-          if (option.includes("aula")) {
-            return "Otimo caminho. Aula gratuita funciona bem quando a pessoa precisa confiar em voce antes de comprar ou entrar em uma lista.";
+          if (optionKey.includes("aula")) {
+            return "Ótimo caminho. Aula gratuita funciona bem quando a pessoa precisa confiar em você antes de comprar ou entrar em uma lista.";
           }
 
-          return "Tudo bem nao saber ainda. Muita gente trava exatamente ai: quer aparecer online, mas nao sabe qual pagina criar primeiro.";
+          return "Tudo bem não saber ainda. Muita gente trava exatamente aí: quer aparecer online, mas não sabe qual página criar primeiro.";
         }
 
         if (question.id === "oferta") {
-          if (option.includes("ja tenho")) {
-            return "Excelente. Se a oferta ja existe, o maior ganho agora e colocar uma pagina no ar para testar mensagem, interesse e vendas.";
+          if (optionKey.includes("ja tenho")) {
+            return "Excelente. Se a oferta já existe, o maior ganho agora é colocar uma página no ar para testar mensagem, interesse e vendas.";
           }
 
-          if (option.includes("ideia")) {
-            return "Esse e um momento bom para validar sem gastar muito. Uma pagina simples pode mostrar se a ideia desperta interesse antes de voce montar tudo.";
+          if (optionKey.includes("ideia")) {
+            return "Esse é um momento bom para validar sem gastar muito. Uma página simples pode mostrar se a ideia desperta interesse antes de você montar tudo.";
           }
 
-          return "Sem problema. Mesmo comecando do zero, da para usar uma pagina como primeiro rascunho publico da sua ideia.";
+          return "Sem problema. Mesmo começando do zero, dá para usar uma página como primeiro rascunho público da sua ideia.";
         }
 
         if (question.id === "trava") {
-          if (option.includes("programar")) {
-            return "Essa dor e bem comum. A ideia nao e virar programador, e aprender a pedir para a IA montar a estrutura e saber onde trocar textos, links e cores.";
+          if (optionKey.includes("programar")) {
+            return "Essa dor é bem comum. A ideia não é virar programador, é aprender a pedir para a IA montar a estrutura e saber onde trocar textos, links e cores.";
           }
 
-          if (option.includes("tecnico")) {
-            return "Sim, quando tudo parece tecnico demais, a pagina vira um monstro antes mesmo de nascer. O caminho e quebrar em partes simples.";
+          if (optionKey.includes("tecnico")) {
+            return "Sim, quando tudo parece técnico demais, a página vira um monstro antes mesmo de nascer. O caminho é quebrar em partes simples.";
           }
 
-          if (option.includes("ferramenta cara")) {
-            return "Essa dor pesa. Pagar ferramenta todo mes antes de validar a oferta pode matar a ideia cedo demais.";
+          if (optionKey.includes("ferramenta cara")) {
+            return "Essa dor pesa. Pagar ferramenta todo mês antes de validar a oferta pode matar a ideia cedo demais.";
           }
 
-          if (option.includes("outras pessoas")) {
-            return "Depender dos outros para cada ajuste pequeno cansa. Trocar um titulo ou botao nao deveria virar um projeto.";
+          if (optionKey.includes("outras pessoas")) {
+            return "Depender dos outros para cada ajuste pequeno cansa. Trocar um título ou botão não deveria virar um projeto.";
           }
 
-          return "Esse medo faz sentido. Quando a pessoa nao sabe o que esta fazendo, ate publicar uma pagina simples parece arriscado.";
+          return "Esse medo faz sentido. Quando a pessoa não sabe o que está fazendo, até publicar uma página simples parece arriscado.";
         }
 
         if (question.id === "tentativa") {
-          if (option.includes("nao consegui")) {
-            return "Isso mostra que o problema talvez nao seja sua capacidade, mas a falta de um caminho simples ate o final.";
+          if (optionKey.includes("nao consegui")) {
+            return "Isso mostra que o problema talvez não seja sua capacidade, mas a falta de um caminho simples até o final.";
           }
 
-          if (option.includes("ficou ruim")) {
-            return "Acontece muito. A pessoa ate monta alguma coisa, mas sente que nao passa confianca suficiente para divulgar.";
+          if (optionKey.includes("ficou ruim")) {
+            return "Acontece muito. A pessoa até monta alguma coisa, mas sente que não passa confiança suficiente para divulgar.";
           }
 
-          if (option.includes("Nunca")) {
-            return "Entao o melhor e comecar com uma primeira pagina guiada, sem tentar aprender tudo de uma vez.";
+          if (optionKey.includes("nunca")) {
+            return "Então o melhor é começar com uma primeira página guiada, sem tentar aprender tudo de uma vez.";
           }
 
-          return "Bom sinal. Se voce ja conseguiu colocar algo no ar, agora o ganho esta em melhorar velocidade, visual e clareza da oferta.";
+          return "Bom sinal. Se você já conseguiu colocar algo no ar, agora o ganho está em melhorar velocidade, visual e clareza da oferta.";
         }
 
         if (question.id === "primeiraPagina") {
-          return "Certo. Escolher uma primeira pagina evita aquela armadilha de querer criar site completo, funil inteiro e mil detalhes antes de validar.";
+          return "Certo. Escolher uma primeira página evita aquela armadilha de querer criar site completo, funil inteiro e mil detalhes antes de validar.";
         }
 
         if (question.id === "captacao") {
-          if (option.includes("WhatsApp")) {
-            return "Boa. WhatsApp pode acelerar conversa e venda, mas ainda vale pedir pouco para nao espantar quem esta chegando agora.";
+          if (optionKey.includes("whatsapp")) {
+            return "Boa. WhatsApp pode acelerar conversa e venda, mas ainda vale pedir pouco para não espantar quem está chegando agora.";
           }
 
-          if (option.includes("email")) {
-            return "Otimo. Nome e email ja bastam para comecar uma lista sem deixar o formulario pesado.";
+          if (optionKey.includes("email")) {
+            return "Ótimo. Nome e email já bastam para começar uma lista sem deixar o formulário pesado.";
           }
 
-          if (option.includes("oferta")) {
+          if (optionKey.includes("oferta")) {
             return "Tudo bem. Em alguns casos, primeiro a pessoa precisa entender a oferta; a captura pode entrar depois.";
           }
 
-          return "Sem pressa. O importante e a pagina deixar claro qual e o proximo passo da pessoa.";
+          return "Sem pressa. O importante é a página deixar claro qual é o próximo passo da pessoa.";
         }
 
         if (question.id === "ia") {
-          if (option.includes("ajudaria")) {
-            return "Esse e o ponto forte: voce nao precisa decorar codigo para pedir mudancas. Precisa aprender a pedir bem e testar com calma.";
+          if (optionKey.includes("ajudaria")) {
+            return "Esse é o ponto forte: você não precisa decorar código para pedir mudanças. Precisa aprender a pedir bem e testar com calma.";
           }
 
-          if (option.includes("entender")) {
-            return "Justo. A IA fica mais util quando voce sabe pedir alteracoes especificas, como trocar uma promessa, simplificar uma secao ou ajustar um botao.";
+          if (optionKey.includes("entender")) {
+            return "Justo. A IA fica mais útil quando você sabe pedir alterações específicas, como trocar uma promessa, simplificar uma seção ou ajustar um botão.";
           }
 
-          return "Sem problema. O comeco pode ser bem guiado: copiar, colar, pedir uma mudanca pequena e ver o resultado.";
+          return "Sem problema. O começo pode ser bem guiado: copiar, colar, pedir uma mudança pequena e ver o resultado.";
         }
 
         if (question.id === "interesse") {
-          if (option.includes("preco")) {
-            return "Faz sentido olhar o preco. Mas antes disso, o ponto principal e saber se o metodo resolve a dor de publicar sem depender de ferramenta cara ou programador.";
+          if (optionKey.includes("preco")) {
+            return "Faz sentido olhar o preço. Mas antes disso, o ponto principal é saber se o método resolve a dor de publicar sem depender de ferramenta cara ou programador.";
           }
 
-          if (option.includes("incluso")) {
-            return "Perfeito. Ver o que esta incluso ajuda a comparar com contratar alguem ou pagar ferramenta todo mes.";
+          if (optionKey.includes("incluso")) {
+            return "Perfeito. Ver o que está incluso ajuda a comparar com contratar alguém ou pagar ferramenta todo mês.";
           }
 
-          return "Otimo. Entao voce esta procurando um caminho pratico, sem enrolacao e com ferramentas gratuitas.";
+          return "Ótimo. Então você está procurando um caminho prático, sem enrolação e com ferramentas gratuitas.";
         }
 
         if (question.id === "conversao") {
-          return "Perfeito. Vou deixar os caminhos abaixo para voce escolher como quer continuar agora.";
+          return "Perfeito. Vou deixar os caminhos abaixo para você escolher como quer continuar agora.";
         }
 
         return "";
       }
 
       function getPageRecommendation() {
-        const firstPage = answers.primeiraPagina || answers.objetivo || "Pagina de vendas";
+        const firstPage = normalizeText(answers.primeiraPagina || answers.objetivo || "Página de vendas");
 
-        if (firstPage.includes("captura")) return "pagina de captura";
-        if (firstPage.includes("bio")) return "pagina de links para bio";
-        if (firstPage.includes("lista")) return "pagina de lista de espera";
-        if (firstPage.includes("aula")) return "pagina de aula gratuita";
-        return "pagina de vendas";
+        if (firstPage.includes("captura")) return "página de captura";
+        if (firstPage.includes("bio")) return "página de links para bio";
+        if (firstPage.includes("lista")) return "página de lista de espera";
+        if (firstPage.includes("aula")) return "página de aula gratuita";
+        return "página de vendas";
       }
 
       function getMainPain() {
-        const pain = answers.trava || "Acho tudo muito tecnico";
+        const pain = normalizeText(answers.trava || "Acho tudo muito técnico");
 
         if (pain.includes("programar")) return "criar sem precisar programar";
-        if (pain.includes("tecnico")) return "tirar a parte tecnica do caminho";
+        if (pain.includes("tecnico")) return "tirar a parte técnica do caminho";
         if (pain.includes("ferramenta")) return "publicar sem depender de ferramenta cara";
         if (pain.includes("outras pessoas")) return "ganhar autonomia para criar e alterar";
         if (pain.includes("medo")) return "seguir um passo a passo mais seguro";
-        return "comecar com clareza";
+        return "começar com clareza";
       }
 
       function getLeadPlan() {
-        const capture = answers.captacao || "";
+        const capture = normalizeText(answers.captacao || "");
 
-        if (capture.includes("WhatsApp")) return "captar nome, email e WhatsApp quando fizer sentido";
+        if (capture.includes("whatsapp")) return "captar nome, email e WhatsApp quando fizer sentido";
         if (capture.includes("email")) return "captar nome e email sem pedir dados demais";
         if (capture.includes("oferta")) return "divulgar a oferta primeiro e captar depois";
-        return "decidir a captacao depois que a pagina principal estiver clara";
+        return "decidir a captação depois que a página principal estiver clara";
       }
 
       function renderFinalOffer() {
@@ -935,13 +944,13 @@
         showTyping(function () {
           addMessage(
             `<strong>Resumo do seu chat:</strong><br>` +
-            `Voce precisa de uma ${page}, quer ${pain} e pode ${leadPlan}. ` +
-            `O curso Pagina no Ar com IA foi criado para esse caminho: montar paginas com IA, publicar no GitHub Pages e alterar sem depender de programador.`
+            `Você precisa de uma ${page}, quer ${pain} e pode ${leadPlan}. ` +
+            `O curso Página no Ar com IA foi criado para esse caminho: montar páginas com IA, publicar no GitHub Pages e alterar sem depender de programador.`
           );
 
           addMessage(
-            `<strong>Quer conhecer o passo a passo para criar suas paginas com IA usando ferramentas gratuitas?</strong><br>` +
-            `Escolha uma das opcoes abaixo para continuar.`
+            `<strong>Quer conhecer o passo a passo para criar suas páginas com IA usando ferramentas gratuitas?</strong><br>` +
+            `Escolha uma das opções abaixo para continuar.`
           );
         });
       }
@@ -954,7 +963,7 @@
         optionGrid.innerHTML = "";
         finalActions.style.display = "none";
         updateProgress();
-        addMessage("Oi. Me responde rapidinho e eu te ajudo a entender qual pagina criar primeiro, sem complicar com codigo ou ferramenta cara.");
+        addMessage("Oi. Me responde rapidinho e eu te ajudo a entender qual página criar primeiro, sem complicar com código ou ferramenta cara.");
         renderQuestion();
       }
 

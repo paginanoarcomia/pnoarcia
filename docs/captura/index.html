@@ -6,7 +6,7 @@
     <title>Receba o guia gratuito</title>
     <meta
       name="description"
-      content="Baixe um guia gratuito para tirar sua primeira pagina do papel e colocar sua oferta online."
+      content="Baixe um guia gratuito para tirar sua primeira página do papel e colocar sua oferta online."
     >
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -246,19 +246,19 @@
       <div class="page">
         <section class="intro" aria-labelledby="titulo-captura">
           <p class="eyebrow">Material gratuito</p>
-          <h1 id="titulo-captura">Coloque sua primeira pagina no ar com mais clareza.</h1>
+          <h1 id="titulo-captura">Coloque sua primeira página no ar com mais clareza.</h1>
           <p class="lead">
-            Receba um guia simples para organizar sua oferta, publicar uma pagina e comecar a captar contatos sem pagar hospedagem.
+            Receba um guia simples para organizar sua oferta, publicar uma página e começar a captar contatos sem pagar hospedagem.
           </p>
 
-          <ul class="benefits" aria-label="O que voce vai receber">
+          <ul class="benefits" aria-label="O que você vai receber">
             <li><span>1</span>Um roteiro direto para tirar sua ideia do papel.</li>
-            <li><span>2</span>Um checklist para publicar e testar sua pagina.</li>
-            <li><span>3</span>Prompts para pedir ajustes para a IA com seguranca.</li>
+            <li><span>2</span>Um checklist para publicar e testar sua página.</li>
+            <li><span>3</span>Prompts para pedir ajustes para a IA com segurança.</li>
           </ul>
 
           <div class="preview" aria-hidden="true">
-            <strong>Guia rapido</strong>
+            <strong>Guia rápido</strong>
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -289,7 +289,7 @@
               Interesse <span aria-hidden="true">(opcional)</span>
               <select id="interesse" name="interesse">
                 <option value="">Selecione se fizer sentido</option>
-                <option value="Criar minha primeira pagina">Criar minha primeira pagina</option>
+                <option value="Criar minha primeira página">Criar minha primeira página</option>
                 <option value="Captar leads">Captar leads</option>
                 <option value="Vender uma oferta">Vender uma oferta</option>
               </select>
@@ -301,7 +301,7 @@
             <p id="form-message" class="notice" role="status" aria-live="polite"></p>
           </form>
 
-          <p class="privacy">Seus dados serao usados apenas para enviar o material e acompanhar seu interesse.</p>
+          <p class="privacy">Seus dados serão usados apenas para enviar o material e acompanhar seu interesse.</p>
         </section>
       </div>
     </main>
@@ -324,7 +324,7 @@
         event.preventDefault();
 
         if (APPS_SCRIPT_URL === "COLE_AQUI_A_URL_DO_WEB_APP") {
-          setMessage("Cole a URL do Web App no arquivo desta pagina antes de testar o envio.", "error");
+          setMessage("Cole a URL do Web App no arquivo desta página antes de testar o envio.", "error");
           return;
         }
 
@@ -345,7 +345,7 @@
           setMessage("Cadastro enviado. Abrindo o material...", "success");
           window.location.href = DELIVERY_PAGE;
         } catch (error) {
-          setMessage("Nao foi possivel enviar agora. Confira a URL do Apps Script e tente novamente.", "error");
+          setMessage("Não foi possível enviar agora. Confira a URL do Apps Script e tente novamente.", "error");
           button.disabled = false;
           button.textContent = "Quero receber o guia";
         }
