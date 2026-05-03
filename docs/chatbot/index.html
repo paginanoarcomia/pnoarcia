@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat de pagina com IA</title>
+    <meta
+      name="description"
+      content="Responda o chat e descubra como criar sua pagina com IA usando ferramentas gratuitas."
+    >
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #0f0f1a;
+        --surface: #16162a;
+        --surface-2: #1a1a2e;
+        --ink: #ffffff;
+        --muted: #d1d5db;
+        --soft: #9ca3af;
+        --line: rgba(255, 255, 255, 0.08);
+        --brand: #06d6a0;
+        --brand-dark: #05b588;
+        --accent: #7c3aed;
+        --accent-light: #a78bfa;
+        --accent-soft: rgba(124, 58, 237, 0.16);
+        --warning: #fbbf24;
+        --danger: #ef4444;
+        --dark: #0f0f1a;
+        --shadow-glow: 0 0 44px rgba(124, 58, 237, 0.28);
+        --shadow-card: 0 18px 60px rgba(0, 0, 0, 0.34);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.22), transparent 32rem),
+          radial-gradient(circle at 90% 12%, rgba(6, 214, 160, 0.16), transparent 28rem),
+          var(--bg);
+        color: var(--ink);
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 82%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(15, 15, 26, 0.86);
+        backdrop-filter: blur(18px);
+      }
+
+      .topbar-inner {
+        width: min(100%, 1160px);
+        margin: 0 auto;
+        padding: 14px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        font-weight: 900;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        flex: 0 0 36px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--accent), var(--brand));
+        color: #ffffff;
+        box-shadow: 0 0 30px rgba(124, 58, 237, 0.38);
+      }
+
+      .brand span:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .topbar-link {
+        display: none;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: var(--brand);
+        color: var(--dark);
+        font-size: 0.9rem;
+        font-weight: 800;
+        text-decoration: none;
+        padding: 10px 16px;
+      }
+
+      main {
+        width: min(100%, 1160px);
+        margin: 0 auto;
+        padding: 28px 18px 42px;
+      }
+
+      .hero {
+        display: grid;
+        gap: 22px;
+        padding: 26px 0 28px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 720px;
+        margin-bottom: 0;
+        font-size: clamp(2rem, 7vw, 4rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .highlight {
+        background: linear-gradient(135deg, var(--accent-light), var(--brand));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-copy {
+        max-width: 700px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .layout {
+        display: grid;
+        gap: 20px;
+        max-width: 860px;
+        margin: 0 auto;
+      }
+
+      .chat-panel {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(22, 22, 42, 0.88);
+        box-shadow: var(--shadow-card);
+        overflow: hidden;
+      }
+
+      .chat-panel {
+        min-height: 620px;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+
+      .chat-head {
+        padding: 18px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(6, 214, 160, 0.08));
+      }
+
+      .chat-title-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .chat-title {
+        display: grid;
+        gap: 3px;
+      }
+
+      .chat-title strong {
+        font-size: 1.05rem;
+      }
+
+      .chat-title span,
+      .progress-text,
+      .small {
+        color: var(--soft);
+        font-size: 0.9rem;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        flex: 0 0 auto;
+        border-radius: 999px;
+        background: rgba(6, 214, 160, 0.14);
+        color: var(--brand);
+        font-size: 0.78rem;
+        font-weight: 800;
+        padding: 5px 10px;
+      }
+
+      .progress-wrap {
+        margin-top: 16px;
+      }
+
+      .progress-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .progress-track {
+        height: 8px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .progress-bar {
+        width: 0%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--accent), var(--brand));
+        transition: width 0.35s ease;
+      }
+
+      .chat-body {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        min-height: 0;
+        max-height: 560px;
+        padding: 18px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+
+      .message {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        animation: messageIn 0.24s ease both;
+      }
+
+      .message.user {
+        justify-content: flex-end;
+      }
+
+      .avatar {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        flex: 0 0 34px;
+        border-radius: 10px;
+        background: var(--accent-soft);
+        color: var(--accent-light);
+        font-size: 0.78rem;
+        font-weight: 900;
+      }
+
+      .bubble {
+        max-width: min(82%, 620px);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        border-top-left-radius: 6px;
+        background: var(--surface-2);
+        color: var(--muted);
+        padding: 12px 14px;
+      }
+
+      .message.user .bubble {
+        border-color: rgba(6, 214, 160, 0.24);
+        border-top-left-radius: 16px;
+        border-top-right-radius: 6px;
+        background: linear-gradient(135deg, rgba(6, 214, 160, 0.18), rgba(124, 58, 237, 0.16));
+        color: var(--ink);
+      }
+
+      .bubble strong {
+        color: var(--ink);
+      }
+
+      .typing {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        min-height: 22px;
+      }
+
+      .typing span {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-light);
+        animation: typing 0.9s infinite ease-in-out;
+      }
+
+      .typing span:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+
+      .typing span:nth-child(3) {
+        animation-delay: 0.24s;
+      }
+
+      .chat-actions {
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+        border-top: 1px solid var(--line);
+        background: rgba(15, 15, 26, 0.52);
+      }
+
+      .option-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .option-button {
+        width: 100%;
+        min-height: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+        padding: 12px 14px;
+        text-align: left;
+        transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+      }
+
+      .option-button:hover,
+      .option-button:focus {
+        border-color: rgba(6, 214, 160, 0.45);
+        background: rgba(6, 214, 160, 0.1);
+        outline: 0;
+        transform: translateY(-1px);
+      }
+
+      .final-actions {
+        display: none;
+        gap: 10px;
+      }
+
+      .cta,
+      .ghost {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 52px;
+        border-radius: 10px;
+        font-weight: 900;
+        text-align: center;
+        text-decoration: none;
+        padding: 13px 16px;
+      }
+
+      .cta {
+        background: var(--brand);
+        color: var(--dark);
+        box-shadow: 0 8px 30px rgba(6, 214, 160, 0.24);
+      }
+
+      .cta:hover,
+      .cta:focus {
+        background: var(--brand-dark);
+      }
+
+      .ghost {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .restart {
+        width: fit-content;
+        min-height: 42px;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--accent-light);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 800;
+        padding: 8px 0;
+        text-align: left;
+      }
+
+      @keyframes typing {
+        0%,
+        80%,
+        100% {
+          opacity: 0.35;
+          transform: translateY(0);
+        }
+
+        40% {
+          opacity: 1;
+          transform: translateY(-3px);
+        }
+      }
+
+      @keyframes messageIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (min-width: 680px) {
+        .topbar-link {
+          display: inline-flex;
+        }
+
+        main {
+          padding: 44px 24px 58px;
+        }
+
+        .hero {
+          padding-top: 42px;
+        }
+
+        .option-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .final-actions {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .final-actions .cta {
+          grid-column: 1 / -1;
+        }
+
+      }
+
+      @media (min-width: 980px) {
+        .hero {
+          max-width: 920px;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+        }
+
+        .hero-copy {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand" aria-label="Pagina no Ar com IA">
+          <span class="brand-mark" aria-hidden="true">IA</span>
+          <span>Pagina no Ar com IA</span>
+        </div>
+        <a class="topbar-link" href="https://paginanoarcomia.github.io/pnoarcia/vendas/">Ver curso</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="titulo-chatbot">
+        <div>
+          <h1 id="titulo-chatbot">Faca sua pagina com IA e coloque no ar rapido.</h1>
+          <p class="hero-copy">
+            Responda o chat e veja qual pagina voce deve criar primeiro para vender, captar leads ou divulgar sua oferta.
+          </p>
+        </div>
+      </section>
+
+      <section class="layout" aria-label="Chatbot de pagina com IA">
+        <div class="chat-panel">
+          <div class="chat-head">
+            <div class="chat-title-row">
+              <div class="chat-title">
+                <strong>Assistente de paginas</strong>
+                <span>Conversa guiada para encontrar seu melhor proximo passo.</span>
+              </div>
+              <span class="status-pill">Online</span>
+            </div>
+
+            <div class="progress-wrap" aria-label="Progresso do chat">
+              <div class="progress-meta">
+                <span class="progress-text" id="progress-label">Etapa 1 de 9</span>
+                <span class="progress-text" id="progress-percent">0%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar" id="progress-bar"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-body" id="chat-body" aria-live="polite"></div>
+
+          <div class="chat-actions">
+            <div class="option-grid" id="option-grid"></div>
+            <div class="final-actions" id="final-actions">
+              <a class="cta" id="course-link" href="https://paginanoarcomia.github.io/pnoarcia/vendas/">Sim, quero ver o curso</a>
+              <a class="ghost" id="whatsapp-link" href="https://wa.me/5511999999999?text=Ola%2C%20vi%20o%20chat%20da%20Pagina%20no%20Ar%20com%20IA%20e%20quero%20saber%20qual%20pagina%20devo%20criar%20primeiro.">Quero falar no WhatsApp</a>
+              <a class="ghost" id="class-link" href="https://paginanoarcomia.github.io/pnoarcia/aula-gratuita/">Quero ver uma aula gratuita</a>
+            </div>
+            <button class="restart" id="restart-button" type="button">Refazer chat</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const SALES_PAGE_URL = "https://paginanoarcomia.github.io/pnoarcia/vendas/";
+      const FREE_CLASS_URL = "https://paginanoarcomia.github.io/pnoarcia/aula-gratuita/";
+      const WHATSAPP_URL = "https://wa.me/5511999999999?text=Ola%2C%20vi%20o%20chat%20da%20Pagina%20no%20Ar%20com%20IA%20e%20quero%20saber%20qual%20pagina%20devo%20criar%20primeiro.";
+
+      const questions = [
+        {
+          id: "objetivo",
+          text: "Qual e o seu objetivo agora?",
+          options: [
+            "Criar uma pagina de vendas",
+            "Criar uma pagina de captura",
+            "Criar uma pagina para bio",
+            "Criar uma pagina de aula gratuita",
+            "Ainda nao sei, quero entender"
+          ]
+        },
+        {
+          id: "oferta",
+          text: "Voce ja tem uma oferta ou produto para divulgar?",
+          options: [
+            "Sim, ja tenho",
+            "Tenho uma ideia, mas ainda nao lancei",
+            "Ainda estou comecando do zero"
+          ]
+        },
+        {
+          id: "trava",
+          text: "O que mais te trava hoje para colocar uma pagina no ar?",
+          options: [
+            "Nao sei programar",
+            "Acho tudo muito tecnico",
+            "Nao quero pagar ferramenta cara",
+            "Dependo de outras pessoas",
+            "Tenho medo de fazer errado"
+          ]
+        },
+        {
+          id: "tentativa",
+          text: "Voce ja tentou criar uma pagina antes?",
+          options: [
+            "Sim, mas nao consegui terminar",
+            "Sim, mas ficou ruim",
+            "Nunca tentei",
+            "Ja consegui, mas quero fazer melhor"
+          ]
+        },
+        {
+          id: "primeiraPagina",
+          text: "Que tipo de pagina voce quer colocar no ar primeiro?",
+          options: [
+            "Pagina de vendas",
+            "Pagina de captura de leads",
+            "Pagina de links para bio",
+            "Pagina de lista de espera",
+            "Pagina de aula gratuita"
+          ]
+        },
+        {
+          id: "captacao",
+          text: "Voce quer captar contatos nessa pagina?",
+          options: [
+            "Sim, nome e email",
+            "Sim, nome, email e WhatsApp",
+            "Por enquanto so quero divulgar uma oferta",
+            "Ainda nao sei"
+          ]
+        },
+        {
+          id: "ia",
+          text: "Voce gostaria de alterar textos, cores e secoes usando IA?",
+          options: [
+            "Sim, isso ajudaria muito",
+            "Talvez, quero entender como funciona",
+            "Nao sei mexer com IA ainda"
+          ]
+        },
+        {
+          id: "interesse",
+          text: "Se existisse um passo a passo para criar essas paginas com IA e publicar de graca, faria sentido para voce?",
+          options: [
+            "Sim, quero aprender",
+            "Talvez, depende do preco",
+            "Quero ver o que esta incluso"
+          ]
+        },
+        {
+          id: "conversao",
+          text: "Quer conhecer o passo a passo para criar suas paginas com IA usando ferramentas gratuitas?",
+          options: [
+            "Sim, quero ver o curso",
+            "Quero falar no WhatsApp",
+            "Quero ver uma aula gratuita"
+          ]
+        }
+      ];
+
+      const chatBody = document.querySelector("#chat-body");
+      const optionGrid = document.querySelector("#option-grid");
+      const finalActions = document.querySelector("#final-actions");
+      const progressLabel = document.querySelector("#progress-label");
+      const progressPercent = document.querySelector("#progress-percent");
+      const progressBar = document.querySelector("#progress-bar");
+      const restartButton = document.querySelector("#restart-button");
+      const courseLink = document.querySelector("#course-link");
+      const whatsappLink = document.querySelector("#whatsapp-link");
+      const classLink = document.querySelector("#class-link");
+
+      let currentQuestion = 0;
+      let answers = {};
+      let locked = false;
+
+      courseLink.href = SALES_PAGE_URL;
+      whatsappLink.href = WHATSAPP_URL;
+      classLink.href = FREE_CLASS_URL;
+
+      function addMessage(text, type) {
+        const message = document.createElement("div");
+        message.className = `message ${type || "bot"}`;
+
+        if (type !== "user") {
+          const avatar = document.createElement("div");
+          avatar.className = "avatar";
+          avatar.textContent = "IA";
+          message.appendChild(avatar);
+        }
+
+        const bubble = document.createElement("div");
+        bubble.className = "bubble";
+        bubble.innerHTML = text;
+        message.appendChild(bubble);
+
+        chatBody.appendChild(message);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+
+      function showTyping(callback) {
+        const message = document.createElement("div");
+        message.className = "message";
+        message.id = "typing-message";
+
+        const avatar = document.createElement("div");
+        avatar.className = "avatar";
+        avatar.textContent = "IA";
+
+        const bubble = document.createElement("div");
+        bubble.className = "bubble";
+        bubble.innerHTML = '<span class="typing"><span></span><span></span><span></span></span>';
+
+        message.appendChild(avatar);
+        message.appendChild(bubble);
+        chatBody.appendChild(message);
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        window.setTimeout(function () {
+          message.remove();
+          callback();
+        }, 420);
+      }
+
+      function updateProgress() {
+        const answered = Object.keys(answers).length;
+        const total = questions.length;
+        const percent = Math.round((answered / total) * 100);
+        const displayQuestion = Math.min(currentQuestion + 1, total);
+
+        progressLabel.textContent = answered === total ? "Chat concluido" : `Etapa ${displayQuestion} de ${total}`;
+        progressPercent.textContent = `${percent}%`;
+        progressBar.style.width = `${percent}%`;
+      }
+
+      function renderQuestion() {
+        locked = false;
+        optionGrid.innerHTML = "";
+        finalActions.style.display = "none";
+
+        if (currentQuestion >= questions.length) {
+          renderFinalOffer();
+          return;
+        }
+
+        const question = questions[currentQuestion];
+        updateProgress();
+
+        showTyping(function () {
+          addMessage(`<strong>${question.text}</strong>`);
+
+          question.options.forEach(function (option) {
+            const button = document.createElement("button");
+            button.className = "option-button";
+            button.type = "button";
+            button.textContent = option;
+            button.addEventListener("click", function () {
+              chooseAnswer(question, option);
+            });
+            optionGrid.appendChild(button);
+          });
+        });
+      }
+
+      function chooseAnswer(question, option) {
+        if (locked) return;
+
+        locked = true;
+        answers[question.id] = option;
+        optionGrid.innerHTML = "";
+        addMessage(option, "user");
+        currentQuestion += 1;
+        updateProgress();
+
+        const bridgeMessage = getBridgeMessage(question, option);
+
+        if (!bridgeMessage) {
+          window.setTimeout(renderQuestion, 260);
+          return;
+        }
+
+        showTyping(function () {
+          addMessage(bridgeMessage);
+          window.setTimeout(renderQuestion, 420);
+        });
+      }
+
+      function getBridgeMessage(question, option) {
+        if (question.id === "objetivo") {
+          if (option.includes("vendas")) {
+            return "Boa. Pagina de vendas costuma travar porque a pessoa sabe que precisa vender, mas nao sabe como organizar promessa, beneficios e chamada para acao sem parecer amador.";
+          }
+
+          if (option.includes("captura")) {
+            return "Faz sentido. Capturar contatos e um dos caminhos mais inteligentes para nao depender so de postagem ou sorte no algoritmo.";
+          }
+
+          if (option.includes("bio")) {
+            return "Perfeito. Uma pagina de bio simples ja tira aquela sensacao de perfil baguncado, com link solto e pouca clareza sobre o proximo passo.";
+          }
+
+          if (option.includes("aula")) {
+            return "Otimo caminho. Aula gratuita funciona bem quando a pessoa precisa confiar em voce antes de comprar ou entrar em uma lista.";
+          }
+
+          return "Tudo bem nao saber ainda. Muita gente trava exatamente ai: quer aparecer online, mas nao sabe qual pagina criar primeiro.";
+        }
+
+        if (question.id === "oferta") {
+          if (option.includes("ja tenho")) {
+            return "Excelente. Se a oferta ja existe, o maior ganho agora e colocar uma pagina no ar para testar mensagem, interesse e vendas.";
+          }
+
+          if (option.includes("ideia")) {
+            return "Esse e um momento bom para validar sem gastar muito. Uma pagina simples pode mostrar se a ideia desperta interesse antes de voce montar tudo.";
+          }
+
+          return "Sem problema. Mesmo comecando do zero, da para usar uma pagina como primeiro rascunho publico da sua ideia.";
+        }
+
+        if (question.id === "trava") {
+          if (option.includes("programar")) {
+            return "Essa dor e bem comum. A ideia nao e virar programador, e aprender a pedir para a IA montar a estrutura e saber onde trocar textos, links e cores.";
+          }
+
+          if (option.includes("tecnico")) {
+            return "Sim, quando tudo parece tecnico demais, a pagina vira um monstro antes mesmo de nascer. O caminho e quebrar em partes simples.";
+          }
+
+          if (option.includes("ferramenta cara")) {
+            return "Essa dor pesa. Pagar ferramenta todo mes antes de validar a oferta pode matar a ideia cedo demais.";
+          }
+
+          if (option.includes("outras pessoas")) {
+            return "Depender dos outros para cada ajuste pequeno cansa. Trocar um titulo ou botao nao deveria virar um projeto.";
+          }
+
+          return "Esse medo faz sentido. Quando a pessoa nao sabe o que esta fazendo, ate publicar uma pagina simples parece arriscado.";
+        }
+
+        if (question.id === "tentativa") {
+          if (option.includes("nao consegui")) {
+            return "Isso mostra que o problema talvez nao seja sua capacidade, mas a falta de um caminho simples ate o final.";
+          }
+
+          if (option.includes("ficou ruim")) {
+            return "Acontece muito. A pessoa ate monta alguma coisa, mas sente que nao passa confianca suficiente para divulgar.";
+          }
+
+          if (option.includes("Nunca")) {
+            return "Entao o melhor e comecar com uma primeira pagina guiada, sem tentar aprender tudo de uma vez.";
+          }
+
+          return "Bom sinal. Se voce ja conseguiu colocar algo no ar, agora o ganho esta em melhorar velocidade, visual e clareza da oferta.";
+        }
+
+        if (question.id === "primeiraPagina") {
+          return "Certo. Escolher uma primeira pagina evita aquela armadilha de querer criar site completo, funil inteiro e mil detalhes antes de validar.";
+        }
+
+        if (question.id === "captacao") {
+          if (option.includes("WhatsApp")) {
+            return "Boa. WhatsApp pode acelerar conversa e venda, mas ainda vale pedir pouco para nao espantar quem esta chegando agora.";
+          }
+
+          if (option.includes("email")) {
+            return "Otimo. Nome e email ja bastam para comecar uma lista sem deixar o formulario pesado.";
+          }
+
+          if (option.includes("oferta")) {
+            return "Tudo bem. Em alguns casos, primeiro a pessoa precisa entender a oferta; a captura pode entrar depois.";
+          }
+
+          return "Sem pressa. O importante e a pagina deixar claro qual e o proximo passo da pessoa.";
+        }
+
+        if (question.id === "ia") {
+          if (option.includes("ajudaria")) {
+            return "Esse e o ponto forte: voce nao precisa decorar codigo para pedir mudancas. Precisa aprender a pedir bem e testar com calma.";
+          }
+
+          if (option.includes("entender")) {
+            return "Justo. A IA fica mais util quando voce sabe pedir alteracoes especificas, como trocar uma promessa, simplificar uma secao ou ajustar um botao.";
+          }
+
+          return "Sem problema. O comeco pode ser bem guiado: copiar, colar, pedir uma mudanca pequena e ver o resultado.";
+        }
+
+        if (question.id === "interesse") {
+          if (option.includes("preco")) {
+            return "Faz sentido olhar o preco. Mas antes disso, o ponto principal e saber se o metodo resolve a dor de publicar sem depender de ferramenta cara ou programador.";
+          }
+
+          if (option.includes("incluso")) {
+            return "Perfeito. Ver o que esta incluso ajuda a comparar com contratar alguem ou pagar ferramenta todo mes.";
+          }
+
+          return "Otimo. Entao voce esta procurando um caminho pratico, sem enrolacao e com ferramentas gratuitas.";
+        }
+
+        if (question.id === "conversao") {
+          return "Perfeito. Vou deixar os caminhos abaixo para voce escolher como quer continuar agora.";
+        }
+
+        return "";
+      }
+
+      function getPageRecommendation() {
+        const firstPage = answers.primeiraPagina || answers.objetivo || "Pagina de vendas";
+
+        if (firstPage.includes("captura")) return "pagina de captura";
+        if (firstPage.includes("bio")) return "pagina de links para bio";
+        if (firstPage.includes("lista")) return "pagina de lista de espera";
+        if (firstPage.includes("aula")) return "pagina de aula gratuita";
+        return "pagina de vendas";
+      }
+
+      function getMainPain() {
+        const pain = answers.trava || "Acho tudo muito tecnico";
+
+        if (pain.includes("programar")) return "criar sem precisar programar";
+        if (pain.includes("tecnico")) return "tirar a parte tecnica do caminho";
+        if (pain.includes("ferramenta")) return "publicar sem depender de ferramenta cara";
+        if (pain.includes("outras pessoas")) return "ganhar autonomia para criar e alterar";
+        if (pain.includes("medo")) return "seguir um passo a passo mais seguro";
+        return "comecar com clareza";
+      }
+
+      function getLeadPlan() {
+        const capture = answers.captacao || "";
+
+        if (capture.includes("WhatsApp")) return "captar nome, email e WhatsApp quando fizer sentido";
+        if (capture.includes("email")) return "captar nome e email sem pedir dados demais";
+        if (capture.includes("oferta")) return "divulgar a oferta primeiro e captar depois";
+        return "decidir a captacao depois que a pagina principal estiver clara";
+      }
+
+      function renderFinalOffer() {
+        const page = getPageRecommendation();
+        const pain = getMainPain();
+        const leadPlan = getLeadPlan();
+
+        optionGrid.innerHTML = "";
+        finalActions.style.display = "grid";
+        updateProgress();
+
+        showTyping(function () {
+          addMessage(
+            `<strong>Resumo do seu chat:</strong><br>` +
+            `Voce precisa de uma ${page}, quer ${pain} e pode ${leadPlan}. ` +
+            `O curso Pagina no Ar com IA foi criado para esse caminho: montar paginas com IA, publicar no GitHub Pages e alterar sem depender de programador.`
+          );
+
+          addMessage(
+            `<strong>Quer conhecer o passo a passo para criar suas paginas com IA usando ferramentas gratuitas?</strong><br>` +
+            `Escolha uma das opcoes abaixo para continuar.`
+          );
+        });
+      }
+
+      function restartChat() {
+        currentQuestion = 0;
+        answers = {};
+        locked = false;
+        chatBody.innerHTML = "";
+        optionGrid.innerHTML = "";
+        finalActions.style.display = "none";
+        updateProgress();
+        addMessage("Oi. Me responde rapidinho e eu te ajudo a entender qual pagina criar primeiro, sem complicar com codigo ou ferramenta cara.");
+        renderQuestion();
+      }
+
+      restartButton.addEventListener("click", restartChat);
+
+      restartChat();
+    </script>
+  </body>
+</html>
