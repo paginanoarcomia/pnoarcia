@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aula gratis</title>
+    <meta
+      name="description"
+      content="Assista a aula gratuita e teste o codigo HTML da sua primeira pagina."
+    >
+    <style>
+      :root {
+        --bg: #f7f3ea;
+        --surface: #fffdf8;
+        --ink: #1e2930;
+        --muted: #5d6b72;
+        --line: #ded6c8;
+        --brand: #0f766e;
+        --brand-dark: #115e59;
+        --accent: #f5b942;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.5;
+      }
+
+      main {
+        padding: 28px 18px;
+      }
+
+      .page {
+        width: min(100%, 1120px);
+        margin: 0 auto;
+        display: grid;
+        gap: 26px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--brand-dark);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        font-size: clamp(2rem, 8vw, 4.15rem);
+        line-height: 1;
+      }
+
+      h2 {
+        font-size: 1.35rem;
+      }
+
+      p {
+        color: var(--muted);
+      }
+
+      .lead {
+        max-width: 640px;
+        margin: 18px 0 0;
+        font-size: 1.08rem;
+      }
+
+      .video-panel,
+      .tool-panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: 0 18px 44px rgba(30, 41, 48, 0.08);
+      }
+
+      .video-panel {
+        overflow: hidden;
+      }
+
+      .video-frame {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: 0;
+        display: block;
+        background: #111827;
+      }
+
+      .video-copy {
+        padding: 18px;
+      }
+
+      .video-copy p {
+        margin: 8px 0 0;
+      }
+
+      .tool-panel {
+        padding: 18px;
+      }
+
+      .tool-head {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .tool-head p {
+        margin: 0;
+      }
+
+      .workspace {
+        display: grid;
+        gap: 16px;
+      }
+
+      .editor,
+      .preview {
+        display: grid;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      label,
+      .preview-title {
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 360px;
+        resize: vertical;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--ink);
+        font: 0.94rem/1.45 "Courier New", Courier, monospace;
+        padding: 14px;
+      }
+
+      textarea:focus {
+        outline: 3px solid rgba(15, 118, 110, 0.2);
+        border-color: var(--brand);
+      }
+
+      .actions {
+        display: grid;
+        gap: 10px;
+      }
+
+      button {
+        border: 0;
+        border-radius: 8px;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+        padding: 13px 16px;
+      }
+
+      .primary {
+        background: var(--brand);
+        color: #ffffff;
+      }
+
+      .primary:hover,
+      .primary:focus {
+        background: var(--brand-dark);
+      }
+
+      .secondary {
+        border: 1px solid var(--line);
+        background: #ffffff;
+        color: var(--ink);
+      }
+
+      .preview-frame {
+        width: 100%;
+        min-height: 420px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .note {
+        margin: 8px 0 0;
+        font-size: 0.92rem;
+      }
+
+      @media (min-width: 760px) {
+        main {
+          padding: 48px 28px;
+        }
+
+        .actions {
+          grid-template-columns: max-content max-content;
+        }
+      }
+
+      @media (min-width: 940px) {
+        .workspace {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          align-items: start;
+        }
+
+        textarea,
+        .preview-frame {
+          min-height: 520px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="page">
+        <header>
+          <p class="eyebrow">Aula gratuita</p>
+          <h1>Crie e teste sua primeira pagina web com IA.</h1>
+          <p class="lead">
+            Assista a aula, cole o codigo HTML recebido da IA e veja o resultado antes de publicar.
+          </p>
+        </header>
+
+        <section class="video-panel" aria-labelledby="titulo-video">
+          <iframe
+            class="video-frame"
+            src="https://www.youtube.com/embed/3aeAy3Qs2UA"
+            title="Aula gratuita no YouTube"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <div class="video-copy">
+            <h2 id="titulo-video">Video da aula</h2>
+            <p>Depois da aula, use o campo abaixo para testar o arquivo `index.html` que a IA criar para voce.</p>
+          </div>
+        </section>
+
+        <section class="tool-panel" aria-labelledby="titulo-preview">
+          <div class="tool-head">
+            <h2 id="titulo-preview">Teste seu codigo HTML</h2>
+            <p>Cole o codigo completo da sua pagina e atualize o preview.</p>
+          </div>
+
+          <div class="workspace">
+            <div class="editor">
+              <label for="html-code">Codigo HTML</label>
+              <textarea id="html-code" spellcheck="false"><!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minha primeira pagina</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #f7f3ea;
+        color: #1e2930;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        padding: 24px;
+      }
+
+      .page {
+        max-width: 620px;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+        line-height: 1;
+      }
+
+      a {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 13px 18px;
+        border-radius: 8px;
+        background: #0f766e;
+        color: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <h1>Minha primeira pagina esta no ar.</h1>
+      <p>Troque este texto pela sua oferta, convite ou mensagem principal.</p>
+      <a href="#">Quero saber mais</a>
+    </main>
+  </body>
+</html></textarea>
+
+              <div class="actions">
+                <button class="primary" id="update-preview" type="button">Atualizar preview</button>
+                <button class="secondary" id="clear-code" type="button">Limpar codigo</button>
+              </div>
+            </div>
+
+            <div class="preview">
+              <div class="preview-title">Preview da pagina</div>
+              <iframe
+                class="preview-frame"
+                id="preview-frame"
+                title="Preview do codigo HTML"
+                sandbox=""
+              ></iframe>
+              <p class="note">O preview mostra HTML e CSS. Scripts ficam bloqueados para manter o teste simples.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      const htmlCode = document.querySelector("#html-code");
+      const previewFrame = document.querySelector("#preview-frame");
+      const updateButton = document.querySelector("#update-preview");
+      const clearButton = document.querySelector("#clear-code");
+
+      function updatePreview() {
+        previewFrame.srcdoc = htmlCode.value;
+      }
+
+      updateButton.addEventListener("click", updatePreview);
+
+      clearButton.addEventListener("click", function () {
+        htmlCode.value = "";
+        updatePreview();
+        htmlCode.focus();
+      });
+
+      updatePreview();
+    </script>
+  </body>
+</html>

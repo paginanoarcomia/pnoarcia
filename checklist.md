@@ -20,7 +20,7 @@
 - [x] Criar `docs/entrega/index.html` como página de entrega;
 - [ ] Criar `docs/vendas/index.html` como página de vendas;
 - [x] Criar `docs/lista-espera/index.html` como página bônus;
-- [ ] Criar `docs/aula-gratuita/index.html` como página bônus;
+- [x] Criar `docs/aula-gratuita/index.html` como página bônus;
 - [ ] Criar `docs/depoimentos/index.html` como página bônus;
 - [x] Colocar assets públicos dentro de `docs/assets/`.
 
