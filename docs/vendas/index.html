@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina no Ar com IA - Crie, publique e altere suas paginas sem programacao</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #7C3AED; --primary-light: #A78BFA; --primary-dark: #5B21B6;
+            --accent: #06D6A0; --accent-dark: #05B588;
+            --dark: #0F0F1A; --dark-light: #1A1A2E; --dark-card: #16162A;
+            --gray: #9CA3AF; --gray-light: #D1D5DB; --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #7C3AED, #06D6A0);
+            --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.3);
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', Arial, Helvetica, sans-serif; background-color: var(--dark); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== BACKGROUND ===== */
+        .bg-orbs { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .bg-orbs .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; animation: floatOrb 20s ease-in-out infinite; }
+        .bg-orbs .orb:nth-child(1) { width: 500px; height: 500px; background: var(--primary); top: -100px; right: -100px; animation-delay: 0s; }
+        .bg-orbs .orb:nth-child(2) { width: 400px; height: 400px; background: var(--accent); bottom: -100px; left: -100px; animation-delay: -7s; }
+        .bg-orbs .orb:nth-child(3) { width: 300px; height: 300px; background: var(--primary-light); top: 50%; left: 50%; animation-delay: -14s; }
+        @keyframes floatOrb { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(50px, -50px) scale(1.1); } 66% { transform: translate(-30px, 30px) scale(0.9); } }
+
+        /* ===== TOPBAR & NAV ===== */
+        .urgency-bar { background: var(--gradient-primary); text-align: center; padding: 12px 20px; font-weight: 700; font-size: 14px; letter-spacing: 0.5px; position: relative; z-index: 10; }
+        .urgency-bar span { background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 4px; margin: 0 4px; font-family: monospace; font-size: 15px; }
+        .nav { position: sticky; top: 0; z-index: 100; background: rgba(15, 15, 26, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(124, 58, 237, 0.15); padding: 16px 0; }
+        .nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-size: 20px; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-cta { background: var(--accent); color: var(--dark); padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; transition: all 0.3s; }
+        .nav-cta:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(6, 214, 160, 0.4); }
+
+        /* ===== HERO ===== */
+        .hero { position: relative; z-index: 1; padding: 80px 0 60px; text-align: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 600; color: var(--primary-light); margin-bottom: 32px; animation: fadeInDown 0.8s ease; }
+        .hero-badge .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+        .hero h1 { font-size: clamp(32px, 5.5vw, 60px); font-weight: 900; line-height: 1.1; margin-bottom: 24px; animation: fadeInUp 0.8s ease 0.2s both; }
+        .hero h1 .highlight { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--gray-light); max-width: 700px; margin: 0 auto 40px; animation: fadeInUp 0.8s ease 0.4s both; }
+        .hero-cta-group { display: flex; flex-direction: column; align-items: center; gap: 16px; animation: fadeInUp 0.8s ease 0.6s both; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--dark); padding: 18px 40px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 18px; transition: all 0.3s; border: none; cursor: pointer; box-shadow: 0 4px 24px rgba(6, 214, 160, 0.3); }
+        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(6, 214, 160, 0.5); }
+        .btn-primary .arrow { transition: transform 0.3s; }
+        .btn-primary:hover .arrow { transform: translateX(4px); }
+        .hero-trust { font-size: 13px; color: var(--gray); }
+        .hero-trust svg { vertical-align: middle; margin-right: 4px; }
+        .free-class-card { position: relative; z-index: 1; max-width: 800px; margin: 60px auto 0; border-radius: 16px; border: 1px solid rgba(124, 58, 237, 0.3); box-shadow: var(--shadow-glow); animation: fadeInUp 0.8s ease 0.8s both; background: var(--dark-card); padding: 32px; text-align: left; display: grid; gap: 18px; }
+        .free-class-card h2 { font-size: clamp(22px, 4vw, 34px); line-height: 1.1; }
+        .free-class-card p { color: var(--gray-light); }
+        .free-class-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+        .btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 13px 18px; color: var(--white); text-decoration: none; font-weight: 800; }
+
+        /* ===== SECTIONS COMMON ===== */
+        .pain-section, .solution-section, .modules-section, .benefits-section, .who-section, .testimonials-section, .bonuses-section, .pricing-section, .guarantee-section, .faq-section, .final-cta { position: relative; z-index: 1; padding: 80px 0; }
+        .section-label { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); margin-bottom: 16px; }
+        .section-title { font-size: clamp(26px, 4vw, 42px); font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .section-subtitle { font-size: 17px; color: var(--gray-light); max-width: 600px; margin-bottom: 48px; }
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-header .section-subtitle { margin-left: auto; margin-right: auto; }
+
+        /* ===== PAIN ===== */
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .pain-card { background: var(--dark-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; transition: all 0.3s; }
+        .pain-card:hover { border-color: rgba(239, 68, 68, 0.3); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(239, 68, 68, 0.1); }
+        .pain-card .icon { font-size: 32px; margin-bottom: 16px; }
+        .pain-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .pain-card p { font-size: 15px; color: var(--gray); line-height: 1.6; }
+
+        /* ===== SOLUTION ===== */
+        .solution-box { background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(6, 214, 160, 0.1)); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 24px; padding: 60px 40px; max-width: 800px; margin: 0 auto; text-align: center; }
+        .solution-box .big-emoji { font-size: 56px; margin-bottom: 24px; }
+        .solution-box h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; margin-bottom: 16px; }
+        .solution-box h2 .highlight { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .solution-box p { font-size: 17px; color: var(--gray-light); max-width: 550px; margin: 0 auto; }
+
+        /* ===== MODULES ===== */
+        .module-list { display: flex; flex-direction: column; gap: 16px; max-width: 750px; margin: 0 auto; }
+        .module-item { background: var(--dark-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 28px 32px; display: flex; gap: 20px; align-items: flex-start; transition: all 0.3s; }
+        .module-item:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateX(8px); box-shadow: 0 4px 24px rgba(124, 58, 237, 0.1); }
+        .module-number { flex-shrink: 0; width: 48px; height: 48px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; }
+        .module-content h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+        .module-content p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+        /* ===== BENEFITS ===== */
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .benefit-card { background: var(--dark-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; text-align: center; transition: all 0.3s; }
+        .benefit-card:hover { border-color: rgba(6, 214, 160, 0.3); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(6, 214, 160, 0.1); }
+        .benefit-card .icon { font-size: 40px; margin-bottom: 16px; }
+        .benefit-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+        .benefit-card p { font-size: 14px; color: var(--gray); }
+
+        /* ===== WHO ===== */
+        .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto; }
+        .who-col h3 { font-size: 20px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+        .who-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+        .who-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.5; color: var(--gray-light); }
+        .who-list li .check, .who-list li .cross { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+        .who-list li .check { color: var(--accent); }
+        .who-list li .cross { color: #EF4444; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .testimonial-card { background: var(--dark-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; transition: all 0.3s; }
+        .testimonial-card:hover { border-color: rgba(124, 58, 237, 0.3); }
+        .testimonial-stars { color: #FBBF24; font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+        .testimonial-text { font-size: 15px; color: var(--gray-light); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
+        .testimonial-name { font-weight: 700; font-size: 14px; }
+        .testimonial-role { font-size: 12px; color: var(--gray); }
+
+        /* ===== BONUSES ===== */
+        .bonus-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
+        .bonus-card { background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(6, 214, 160, 0.05)); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 16px; padding: 32px; position: relative; overflow: hidden; transition: all 0.3s; }
+        .bonus-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-glow); }
+        .bonus-tag { display: inline-block; background: var(--accent); color: var(--dark); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
+        .bonus-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .bonus-card p { font-size: 14px; color: var(--gray); margin-bottom: 12px; }
+        .bonus-value { font-size: 13px; color: var(--primary-light); font-weight: 600; }
+        .bonus-value s { color: var(--gray); }
+
+        /* ===== PRICING ===== */
+        .pricing-section { text-align: center; }
+        .pricing-card { max-width: 520px; margin: 0 auto; background: var(--dark-card); border: 2px solid var(--primary); border-radius: 24px; padding: 48px 40px; position: relative; box-shadow: var(--shadow-glow); }
+        .pricing-popular { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gradient-primary); color: var(--white); font-size: 13px; font-weight: 700; padding: 6px 24px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; }
+        .pricing-original { font-size: 16px; color: var(--gray); margin-bottom: 4px; }
+        .pricing-original s { font-size: 20px; color: #EF4444; }
+        .pricing-price { margin-bottom: 8px; }
+        .pricing-price .currency { font-size: 24px; font-weight: 700; vertical-align: top; line-height: 1.6; }
+        .pricing-price .amount { font-size: 64px; font-weight: 900; line-height: 1; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .pricing-installments { font-size: 15px; color: var(--gray-light); margin-bottom: 32px; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px; }
+        .pricing-features li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--gray-light); }
+        .pricing-features li .check { color: var(--accent); font-size: 18px; }
+        .pricing-btn { display: block; width: 100%; padding: 18px; background: var(--accent); color: var(--dark); border: none; border-radius: 12px; font-size: 18px; font-weight: 800; cursor: pointer; transition: all 0.3s; text-decoration: none; text-align: center; box-shadow: 0 4px 24px rgba(6, 214, 160, 0.3); }
+        .pricing-btn:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(6, 214, 160, 0.5); }
+        .pricing-guarantee { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; font-size: 13px; color: var(--gray); }
+        .pricing-guarantee svg { color: var(--accent); }
+
+        /* ===== GUARANTEE ===== */
+        .guarantee-box { max-width: 700px; margin: 0 auto; background: var(--dark-card); border: 1px solid rgba(6, 214, 160, 0.2); border-radius: 20px; padding: 48px; display: flex; gap: 32px; align-items: center; }
+        .guarantee-icon { flex-shrink: 0; font-size: 64px; }
+        .guarantee-content h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: var(--accent); }
+        .guarantee-content p { font-size: 15px; color: var(--gray-light); line-height: 1.7; }
+
+        /* ===== FAQ ===== */
+        .faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+        .faq-item { background: var(--dark-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .faq-item.active { border-color: rgba(124, 58, 237, 0.3); }
+        .faq-question { width: 100%; background: none; border: none; color: var(--white); padding: 20px 24px; font-size: 16px; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter', Arial, Helvetica, sans-serif; }
+        .faq-question .faq-toggle { font-size: 22px; transition: transform 0.3s; color: var(--primary-light); }
+        .faq-item.active .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+        .faq-item.active .faq-answer { max-height: 300px; }
+        .faq-answer p { padding: 0 24px 20px; font-size: 14px; color: var(--gray); line-height: 1.7; }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta { text-align: center; padding: 60px 0 80px; }
+        .final-cta-box { background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(6, 214, 160, 0.1)); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 24px; padding: 60px 40px; max-width: 700px; margin: 0 auto; }
+        .final-cta-box h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; margin-bottom: 16px; }
+        .final-cta-box p { font-size: 17px; color: var(--gray-light); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+        /* ===== FOOTER ===== */
+        .footer { position: relative; z-index: 1; text-align: center; padding: 40px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .footer p { font-size: 13px; color: var(--gray); }
+        .footer a { color: var(--primary-light); text-decoration: none; }
+        .footer .disclaimer { margin-top: 16px; font-size: 11px; color: #6B7280; }
+
+        /* ===== ANIMATIONS & RESPONSIVE ===== */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) {
+            .who-grid { grid-template-columns: 1fr; }
+            .guarantee-box { flex-direction: column; text-align: center; padding: 32px; }
+            .pricing-card { padding: 36px 24px; }
+            .pricing-price .amount { font-size: 52px; }
+            .hero { padding: 60px 0 40px; }
+            .solution-box, .final-cta-box { padding: 40px 24px; }
+            .module-item { padding: 20px; }
+            .urgency-bar { font-size: 12px; }
+        }
+        @media (max-width: 480px) { .benefits-grid, .pain-grid, .testimonials-grid, .bonus-cards { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="bg-orbs"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+
+    <div class="urgency-bar">🔥 Vagas limitadas — Preço especial expira em <span id="countdown">23:59:47</span></div>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-logo">🚀 Página no Ar com IA</div>
+            <a href="https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI" class="nav-cta sales-link">Quero Começar Agora</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge"><span class="dot"></span> Método atualizado para 2025</div>
+            <h1>Coloque seu produto <span class="highlight">online com IA</span> sem programação e sem depender de ninguém.</h1>
+            <p class="hero-sub">Aprenda a criar, publicar e alterar paginas de venda, captura, bio, aula gratuita e lista de espera usando linguagem simples e IA.</p>
+            <div class="hero-cta-group">
+                <a href="https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI" class="btn-primary sales-link">Quero Criar Minha Página com IA <span class="arrow">→</span></a>
+                <p class="hero-trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Acesso ao curso · Garantia de 7 dias · Bônus incluídos</p>
+            </div>
+            <div class="free-class-card">
+                <span class="section-label">Quer ver antes?</span>
+                <h2>Assista a aula gratuita e teste seu primeiro codigo HTML.</h2>
+                <p>Na aula gratuita voce ve a ideia na pratica e pode colar o codigo criado pela IA para visualizar sua pagina.</p>
+                <div class="free-class-actions">
+                    <a href="../aula-gratuita/" class="btn-secondary">Assistir aula gratuita</a>
+                    <a href="https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI" class="btn-primary sales-link">Ir para inscricao <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <span class="section-label">Você se identifica?</span>
+            <h2 class="section-title">O que está te impedindo de lançar seu produto?</h2>
+            <p class="section-subtitle">Se você já travou em alguma dessas situações, esse curso foi feito pra você.</p>
+            <div class="pain-grid">
+                <div class="pain-card fade-in"><div class="icon">💸</div><h3>Gastando fortunas com freelancers</h3><p>Cada alteração custa caro. Você depende de alguém com agenda lotada e demora pra responder.</p></div>
+                <div class="pain-card fade-in"><div class="icon">😵</div><h3>Perdido com códigos e plataformas</h3><p>Codigos, ferramentas e configuracoes parecem outro idioma. E cada erro vira uma dor de cabeça.</p></div>
+                <div class="pain-card fade-in"><div class="icon">⏳</div><h3>Semanas pra colocar uma página no ar</h3><p>Você tem uma ideia, mas a execução demora tanto que a motivação some. O produto nunca sai do papel.</p></div>
+                <div class="pain-card fade-in"><div class="icon">🔄</div><h3>Impossível testar e otimizar rápido</h3><p>Você sabe que precisa mudar o título, a cor, a oferta... mas alterar a página é um projeto inteiro.</p></div>
+                <div class="pain-card fade-in"><div class="icon">🔒</div><h3>Preso em ferramentas caras</h3><p>Mensalidades que somam R$200, R$300/mês. E você usa 10% do recurso.</p></div>
+                <div class="pain-card fade-in"><div class="icon">😰</div><h3>Medo de errar e perder dinheiro</h3><p>Sem experiência, tem medo de investir. E sem testar rápido, nunca vai saber o que funciona.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution-section">
+        <div class="container">
+            <div class="solution-box fade-in">
+                <div class="big-emoji">✨</div>
+                <h2>E se você pudesse criar qualquer página <span class="highlight">em minutos</span>, de graça, usando apenas a IA?</h2>
+                <p>Sem precisar aprender programacao. Voce digita o que quer em portugues simples e a IA ajuda a construir, publicar e ajustar sua pagina.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULOS ATUALIZADOS -->
+    <section class="modules-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Conteúdo do curso</span>
+                <h2 class="section-title">O que você vai aprender (e colocar no ar em minutos)</h2>
+                <p class="section-subtitle">Do zero a uma pagina pronta para divulgar. So voce, a IA e sua linguagem escrita. Zero complicacao.</p>
+            </div>
+
+            <div class="module-list">
+                <div class="module-item fade-in">
+                    <div class="module-number">01</div>
+                    <div class="module-content">
+                        <h3>Fundamentos: IA + Linguagem Simples</h3>
+                        <p>Aprenda a "conversar" com a IA. Voce explica sua ideia em texto simples e recebe uma pagina inicial para ajustar.</p>
+                    </div>
+                </div>
+                <div class="module-item fade-in">
+                    <div class="module-number">02</div>
+                    <div class="module-content">
+                        <h3>Página Link/Bio (Estilo Linktree)</h3>
+                        <p>Crie uma pagina de links profissional e rapida. Adicione botoes para produtos, WhatsApp e redes sociais.</p>
+                    </div>
+                </div>
+                <div class="module-item fade-in">
+                    <div class="module-number">03</div>
+                    <div class="module-content">
+                        <h3>Página de Captura com Isca Digital</h3>
+                        <p>Monte uma pagina simples oferecendo seu PDF, e-book ou checklist. A IA ajuda com texto, estrutura e chamada principal.</p>
+                    </div>
+                </div>
+                <div class="module-item fade-in">
+                    <div class="module-number">04</div>
+                    <div class="module-content">
+                        <h3>Página de Vendas Completa</h3>
+                        <p>Titulo, dor, solucao, oferta, garantia e CTA. Tudo ajustado com comandos de texto. Mude precos, cores ou secoes com autonomia.</p>
+                    </div>
+                </div>
+                <div class="module-item fade-in" style="border-color: rgba(6, 214, 160, 0.4); background: linear-gradient(135deg, rgba(6, 214, 160, 0.05), transparent);">
+                    <div class="module-number" style="background: linear-gradient(135deg, #06D6A0, #7C3AED);">🎁</div>
+                    <div class="module-content">
+                        <h3>BÔNUS: Página de Aula Gratuita</h3>
+                        <p>Crie uma pagina para divulgar sua aula gratuita, colocar o link da aula e levar a pessoa para o proximo passo.</p>
+                    </div>
+                </div>
+                <div class="module-item fade-in" style="border-color: rgba(6, 214, 160, 0.4); background: linear-gradient(135deg, rgba(6, 214, 160, 0.05), transparent);">
+                    <div class="module-number" style="background: linear-gradient(135deg, #06D6A0, #7C3AED);">🎁</div>
+                    <div class="module-content">
+                        <h3>BÔNUS: Página de Lista de Espera</h3>
+                        <p>Capture interessados antes do lançamento oficial e prepare seu publico com uma pagina simples de espera.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Por que esse método?</span>
+                <h2 class="section-title">Benefícios que mudam o jogo</h2>
+                <p class="section-subtitle">Tudo que você ganha ao dominar a criação de páginas com IA e linguagem escrita.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in"><div class="icon">⚡</div><h3>Velocidade absurda</h3><p>Crie uma página completa em minutos. O que levava semanas agora leva um café.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">💰</div><h3>Menos custo para testar</h3><p>Crie paginas simples sem contratar alguem a cada nova ideia ou mudanca pequena.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">🎯</div><h3>Teste e otimize rápido</h3><p>Mudou de ideia? Altere com um prompt. Teste headlines, cores e ofertas na hora.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">🧠</div><h3>Sem conhecimento técnico</h3><p>Não precisa saber HTML ou CSS. Se você sabe digitar, sabe criar páginas.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">🔓</div><h3>Independência total</h3><p>Nunca mais dependa de programador ou agência. Você é dono do processo.</p></div>
+                <div class="benefit-card fade-in"><div class="icon">📈</div><h3>Escalabilidade</h3><p>Crie páginas para quantos produtos quiser. Cada produto, cada oferta, sua página.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="who-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Pra quem é?</span>
+                <h2 class="section-title">Este curso é pra você se...</h2>
+            </div>
+            <div class="who-grid">
+                <div class="who-col fade-in">
+                    <h3>✅ É pra você que:</h3>
+                    <ul class="who-list">
+                        <li><span class="check">✓</span> Quer lançar seu produto digital ou físico</li>
+                        <li><span class="check">✓</span> Não sabe programar e não quer aprender</li>
+                        <li><span class="check">✓</span> Está cansado de pagar caro por páginas simples</li>
+                        <li><span class="check">✓</span> Quer autonomia para criar e alterar páginas</li>
+                        <li><span class="check">✓</span> Precisa testar ofertas e iscas rapidamente</li>
+                        <li><span class="check">✓</span> Quer validar ideias sem investir fortunas</li>
+                    </ul>
+                </div>
+                <div class="who-col fade-in">
+                    <h3>❌ Não é pra você se:</h3>
+                    <ul class="who-list">
+                        <li><span class="cross">✗</span> Já é desenvolvedor web experiente</li>
+                        <li><span class="cross">✗</span> Acha que IA é "modinha" e não vai funcionar</li>
+                        <li><span class="cross">✗</span> Não está disposto a colocar a mão na massa</li>
+                        <li><span class="cross">✗</span> Espera resultado sem aplicar o método</li>
+                        <li><span class="cross">✗</span> Já usa ferramentas pagas e está satisfeito</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Resultados reais</span>
+                <h2 class="section-title">O que dizem nossos alunos</h2>
+                <p class="section-subtitle">Pessoas comuns que criaram páginas profissionais com IA.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Eu gastava R$800 com um freelancer. Com o curso, criei minha página de captura e a de vendas no mesmo dia. Zero código, só pedi pra IA e publiquei."</p><div class="testimonial-author"><div class="testimonial-avatar">CM</div><div><div class="testimonial-name">Camila M.</div><div class="testimonial-role">Infoprodutora</div></div></div></div>
+                <div class="testimonial-card fade-in"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Não sei nada de programação. Em 20 minutos minha página de link/bio estava no ar. Já capturei 300 leads na primeira semana com a página de isca."</p><div class="testimonial-author"><div class="testimonial-avatar">RS</div><div><div class="testimonial-name">Rafael S.</div><div class="testimonial-role">Afiliado Digital</div></div></div></div>
+                <div class="testimonial-card fade-in"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"O melhor é mudar quando quero. Testei 3 headlines na página de vendas em uma tarde. Minha conversão subiu 40%. Antes era impossível pra mim."</p><div class="testimonial-author"><div class="testimonial-avatar">AL</div><div><div class="testimonial-name">Ana L.</div><div class="testimonial-role">Nutricionista Digital</div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bonuses-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Bônus exclusivos</span>
+                <h2 class="section-title">Você ainda leva estes materiais de apoio</h2>
+                <p class="section-subtitle">Bônus simples que já existem no projeto e ajudam a colocar a aula em prática.</p>
+            </div>
+            <div class="bonus-cards">
+                <div class="bonus-card fade-in"><span class="bonus-tag">Bônus #1</span><h3>📋 Bônus de Prompts</h3><p>Modelos para pedir paginas de captura, vendas e revisoes de clareza para a IA.</p><p class="bonus-value">Incluido no curso</p></div>
+                <div class="bonus-card fade-in"><span class="bonus-tag">Bônus #2</span><h3>🎨 Bônus de Templates</h3><p>Roteiros de estrutura para paginas de bio, captura, entrega, vendas e lista de espera.</p><p class="bonus-value">Incluido no curso</p></div>
+                <div class="bonus-card fade-in"><span class="bonus-tag">Bônus #3</span><h3>🚀 Bônus de Checklist</h3><p>Lista simples para revisar texto, links, formulario e publicacao antes de divulgar.</p><p class="bonus-value">Incluido no curso</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Investimento</span>
+                <h2 class="section-title">Comece hoje por menos do que uma pizza</h2>
+                <p class="section-subtitle">Acesso ao curso, materiais de apoio e garantia total de 7 dias.</p>
+            </div>
+            <div class="pricing-card fade-in">
+                <span class="pricing-popular">🔥 Mais escolhido</span>
+                <p class="pricing-original">De <s>R$497</s> por apenas:</p>
+                <div class="pricing-price"><span class="currency">R$</span><span class="amount">67</span></div>
+                <p class="pricing-installments">ou 12x de R$6,74 no cartão</p>
+                <ul class="pricing-features">
+                    <li><span class="check">✓</span> Página de links para bio</li>
+                    <li><span class="check">✓</span> Página de captura</li>
+                    <li><span class="check">✓</span> Página de entrega</li>
+                    <li><span class="check">✓</span> Página de vendas</li>
+                    <li><span class="check">✓</span> Bônus: página de aula gratuita</li>
+                    <li><span class="check">✓</span> Bônus: página de lista de espera</li>
+                    <li><span class="check">✓</span> Bônus de prompts</li>
+                    <li><span class="check">✓</span> Bônus de templates</li>
+                    <li><span class="check">✓</span> Bônus de checklist</li>
+                </ul>
+                <a href="https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI" class="pricing-btn sales-link">QUERO CRIAR MINHA PÁGINA COM IA →</a>
+                <div class="pricing-guarantee"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Garantia incondicional de 7 dias</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-box fade-in">
+                <div class="guarantee-icon">🛡️</div>
+                <div class="guarantee-content">
+                    <h3>Garantia Incondicional de 7 Dias</h3>
+                    <p>Entre no curso, assista as aulas, crie sua primeira página. Se em 7 dias sentir que não é pra você, devolvemos 100%. Sem perguntas, sem burocracia. O risco é todo nosso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Dúvidas frequentes</span>
+                <h2 class="section-title">Perguntas & Respostas</h2>
+                <p class="section-subtitle">Tudo que você precisa saber antes de começar.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item active"><button class="faq-question">Preciso saber programação?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Não! O curso foi feito para quem não sabe nada de código. Você vai digitar comandos em português simples e a IA faz o resto.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Preciso contratar alguem para alterar a pagina?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Não. A ideia do curso e dar autonomia para voce pedir ajustes para a IA e adaptar a pagina com mais seguranca.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Quanto tempo leva pra primeira página ficar pronta?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Seguindo o passo a passo, a maioria dos alunos publica a primeira página em 15 a 30 minutos.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Posso alterar as páginas depois?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Sim! Essa é a maior vantagem. Mude textos, cores, ofertas e seções com um novo comando de texto. Sem depender de ninguém.</p></div></div>
+                <div class="faq-item"><button class="faq-question">E se eu não gostar?<span class="faq-toggle">+</span></button><div class="faq-answer"><p>Você tem 7 dias de garantia incondicional. Se não gostar, devolvemos 100%. Sem perguntas.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <div class="final-cta-box fade-in">
+                <h2>Sua próxima página pode estar no ar <span class="highlight">em minutos</span></h2>
+                <p>Pare de depender de outras pessoas. Crie, publique e altere com IA — do seu jeito, no seu tempo, de graça.</p>
+                <a href="https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI" class="btn-primary sales-link">QUERO COMEÇAR AGORA <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Página no Ar com IA — Todos os direitos reservados.</p>
+            <p style="margin-top: 8px;"><a href="#">Termos de Uso</a> · <a href="#">Política de Privacidade</a> · <a href="#">Contato</a></p>
+            <p class="disclaimer">Este produto não garante a obtenção de resultados. Qualquer referência a resultados é baseada em experiências individuais e pode variar.</p>
+        </div>
+    </footer>
+
+    <script>
+        // EDITE AQUI: troque pelo link real da Hotmart quando estiver pronto.
+        const CHECKOUT_LINK = "https://pay.hotmart.com/SEU-LINK-DA-HOTMART-AQUI";
+
+        document.querySelectorAll('.sales-link').forEach(link => {
+            link.href = CHECKOUT_LINK;
+        });
+
+        function startCountdown() {
+            let hours = 23, minutes = 59, seconds = 47;
+            function update() {
+                document.getElementById('countdown').textContent = String(hours).padStart(2,'0') + ':' + String(minutes).padStart(2,'0') + ':' + String(seconds).padStart(2,'0');
+                seconds--; if (seconds < 0) { seconds = 59; minutes--; } if (minutes < 0) { minutes = 59; hours--; } if (hours < 0) { hours = 23; minutes = 59; seconds = 59; }
+            }
+            setInterval(update, 1000);
+        }
+        startCountdown();
+
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
+    </script>
+</body>
+</html>

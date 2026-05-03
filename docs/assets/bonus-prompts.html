@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bônus #1: 50 Prompts Prontos para Páginas com IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F0F1A;
+            --text: #FFFFFF;
+            --text-light: #D1D5DB;
+            --accent: #7C3AED;
+            --accent-light: #A78BFA;
+            --accent-green: #06D6A0;
+            --border: rgba(255, 255, 255, 0.08);
+            --card-bg: #16162A;
+            --code-bg: #1A1A2E;
+            --dark: #0F0F1A;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        .cover {
+            text-align: center;
+            padding: 80px 24px 60px;
+            page-break-after: always;
+        }
+        .cover h1 { font-size: 36px; font-weight: 900; color: var(--accent-light); margin-bottom: 12px; line-height: 1.2; }
+        .cover h2 { font-size: 22px; font-weight: 600; color: var(--text-light); margin-bottom: 32px; }
+        .cover .badge { display: inline-block; background: var(--accent-green); color: var(--dark); padding: 6px 16px; border-radius: 6px; font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+        .cover .note { font-size: 14px; color: var(--text-light); max-width: 500px; margin: 0 auto; }
+
+        .toc { page-break-after: always; padding: 40px 0; }
+        .toc h3 { font-size: 24px; font-weight: 800; margin-bottom: 24px; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+        .toc ul { list-style: none; }
+        .toc li { padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+        .toc li span { color: var(--text-light); font-size: 14px; }
+
+        .section { page-break-before: always; margin-top: 40px; }
+        .section-title { font-size: 22px; font-weight: 800; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .section-subtitle { font-size: 15px; color: var(--text-light); margin-bottom: 32px; }
+
+        .prompt-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+        .prompt-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .prompt-tag { background: var(--accent-green); color: var(--dark); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+        .prompt-type { font-size: 12px; color: var(--text-light); font-weight: 600; }
+        .prompt-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+        .prompt-text { background: var(--code-bg); padding: 14px; border-radius: 8px; font-family: monospace; font-size: 13px; line-height: 1.7; white-space: pre-wrap; border-left: 3px solid var(--accent-green); }
+        .prompt-tip { margin-top: 10px; font-size: 13px; color: var(--text-light); font-style: italic; }
+
+        .guide { page-break-before: always; padding: 40px 0; }
+        .guide h3 { font-size: 24px; font-weight: 800; margin-bottom: 20px; }
+        .guide p { margin-bottom: 16px; color: var(--text-light); }
+        .guide ul { margin-left: 20px; margin-bottom: 20px; }
+        .guide li { margin-bottom: 8px; }
+
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-light); font-size: 13px; }
+
+        @media print {
+            body { background: white; color: black; }
+            :root {
+                --text: #111827;
+                --text-light: #4B5563;
+                --border: #E5E7EB;
+                --card-bg: #F9FAFB;
+                --code-bg: #F3F4F6;
+            }
+            .page { max-width: 100%; padding: 0; }
+            .cover, .toc, .section, .guide { padding: 20px; }
+            .prompt-text { background: #F9FAFB; border-left: 2px solid #6B7280; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page cover">
+        <div class="badge">BÔNUS EXCLUSIVO</div>
+        <h1>50 Prompts Prontos<br>para Páginas com IA</h1>
+        <h2>Crie, publique e altere páginas profissionais<br>usando apenas linguagem escrita</h2>
+        <p class="note">Material complementar ao curso <strong>Página no Ar com IA</strong>.<br>Copie, personalize e coloque no ar em minutos.</p>
+    </div>
+
+    <div class="page toc">
+        <h3>Índice</h3>
+        <ul>
+            <li>📌 Como Usar Este Material <span>01</span></li>
+            <li>🟢 Emagrecimento & Saúde <span>02</span></li>
+            <li>🟡 Marketing Digital & Produtividade <span>07</span></li>
+            <li>🟠 Beleza & Estética <span>12</span></li>
+            <li>🔵 Finanças & Investimentos <span>17</span></li>
+            <li>🟣 Educação & Parentalidade <span>22</span></li>
+            <li>⚙️ Otimização & Integração <span>27</span></li>
+            <li>🛠️ Guia Rápido de Publicação <span>31</span></li>
+        </ul>
+    </div>
+
+    <div class="page guide">
+        <h3>📌 Como Usar Este Material</h3>
+        <p>Cada prompt foi projetado para ser <strong>copiado e colado direto na IA</strong> (ChatGPT, Claude, Gemini, Grok, etc.). Siga este fluxo:</p>
+        <ul>
+            <li><strong>1.</strong> Escolha o prompt do nicho e tipo de página que deseja.</li>
+            <li><strong>2.</strong> Substitua os campos entre colchetes: <code>[Nome]</code>, <code>[Cor Principal]</code>, <code>[Link]</code>, etc.</li>
+            <li><strong>3.</strong> Envie para a IA com a instrução final: <em>"Gere o código completo em um único arquivo HTML. Não use frameworks. Entregue pronto para copiar e colar."</em></li>
+            <li><strong>4.</strong> Salve como <code>index.html</code> e suba em Netlify, Vercel ou GitHub Pages (ensinado no curso).</li>
+            <li><strong>5.</strong> Teste no celular. Se precisar de ajustes, peça à IA: <em>"Ajuste o espaçamento e deixe os botões mais visíveis em telas pequenas."</em></li>
+        </ul>
+        <p>💡 <strong>Dica de ouro:</strong> Nunca peça "algo bonito" sem contexto. A IA responde melhor a <strong>estrutura + cores + comportamento + limitação técnica</strong>.</p>
+    </div>
+
+    <div class="page section">
+        <div class="section-title">🟢 Emagrecimento & Saúde</div>
+        <div class="section-subtitle">10 prompts para nutricionistas, personal trainers e coaches de bem-estar</div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">01</span><span class="prompt-type">Link/Bio</span></div>
+            <div class="prompt-title">Página de Links Profissional</div>
+            <div class="prompt-text">Crie uma página de link/bio profissional para [Nome], nutricionista esportiva focada em emagrecimento saudável. Estrutura: foto circular, nome + título, 5 botões arredondados para WhatsApp, E-book Gratuito, Página de Vendas, Instagram, TikTok. Design: limpo, cores [Cor principal: ex: #2D6A4F] e branco, mobile-first. HTML/CSS puro, responsivo, sem frameworks externos.</div>
+            <div class="prompt-tip">💡 Troque os links dos botões pelos seus URLs reais antes de publicar.</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">02</span><span class="prompt-type">Captura com Isca</span></div>
+            <div class="prompt-title">Squeeze Page para E-book</div>
+            <div class="prompt-text">Gere uma squeeze page para capturar e-mails oferecendo o e-book "Guia de 7 Dias para Desinchar sem Passar Fome". Estrutura: headline forte, subheadline, mockup simples do PDF à esquerda, formulário (Nome + E-mail) à direita, 3 bullets de benefícios, depoimento curto. Design: tons de [Cor: ex: #E07A5F] e off-white. HTML/CSS/JS puro, focado em conversão.</div>
+            <div class="prompt-tip">💡 Use apenas o campo de e-mail para aumentar a taxa de conversão.</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">03</span><span class="prompt-type">Vendas</span></div>
+            <div class="prompt-title">Página de Vendas de Mentoria</div>
+            <div class="prompt-text">Crie uma página de vendas para a mentoria "Corpo em Equilíbrio". Estrutura: hero com headline + CTA, seção "Para quem é" (3 cards), módulos em grid, prova social (3 depoimentos), oferta com preço riscado/ atual/garantia 7 dias, FAQ simples. Design: fundo branco, botões [Cor CTA], tipografia clean. HTML/CSS/JS puro.</div>
+            <div class="prompt-tip">💡 Adicione um timer de escassez com JS se a mentoria tiver vagas limitadas.</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">04</span><span class="prompt-type">Aula Gratuita</span></div>
+            <div class="prompt-title">Página de Masterclass</div>
+            <div class="prompt-text">Desenvolva uma página para aula gratuita "3 Segredos para Acelerar seu Metabolismo". Estrutura: título, área de vídeo placeholder, botão "Assistir Agora" com scroll suave, formulário de captura para material complementar, CTA final. Design: cores [Cor 1] e [Cor 2], acolhedor, mobile-first.</div>
+            <div class="prompt-tip">💡 Use a tag `<video>` ou iframe do YouTube para embutir a gravação.</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">05</span><span class="prompt-type">Lista de Espera</span></div>
+            <div class="prompt-title">Página de Pré-Lançamento</div>
+            <div class="prompt-text">Crie página de lista de espera para "Desafio 21 Dias Leve". Headline urgente, subheadline, formulário (Nome/E-mail/WhatsApp), contador regressivo JS, aviso anti-spam, botão VIP. Design elegante, tons [Cor] e branco. HTML/CSS/JS puro, pronto para deploy estático.</div>
+            <div class="prompt-tip">💡 Integre com Formspree ou Make.com para salvar os leads automaticamente.</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">06</span><span class="prompt-type">Obrigado</span></div>
+            <div class="prompt-title">Página de Agradecimento</div>
+            <div class="prompt-text">Gere uma página de "Obrigado" pós-cadastro. Mensagem de confirmação, instrução "Verifique seu e-mail", botões para Instagram/YouTube, selo de garantia. Design minimalista, cores [Cor Principal]. Código leve, sem tracking pesado.</div>
+            <div class="prompt-tip">💡 Adicione um link de download direto para o PDF se for entrega imediata.</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">07</span><span class="prompt-type">Prova Social</span></div>
+            <div class="prompt-title">Página de Depoimentos</div>
+            <div class="prompt-text">Crie uma página focada em resultados de alunas/clientes. Grid de 6 cards com foto placeholder, nome, cidade e relato curto. Botão "Quero Resultados Assim" fixo no rodapé. Design clean, cores suaves. Responsivo, HTML/CSS puro.</div>
+            <div class="prompt-tip">💡 Peça à IA para usar `aspect-ratio: 1/1` nas fotos para manter uniformidade.</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">08</span><span class="prompt-type">Webinar</span></div>
+            <div class="prompt-title">Página de Evento Ao Vivo</div>
+            <div class="prompt-text">Desenvolva página para webinar gratuito "Alimentação Anti-inflamatória". Data/hora, contagem regressiva, formulário de inscrição, botão "Adicionar ao Google Calendar", lembrete por e-mail. Design profissional, cores [Cor]. HTML/CSS/JS leve.</div>
+            <div class="prompt-tip">💡 Use o link `https://calendar.google.com/calendar/render?action=TEMPLATE&text=[...]` para o botão.</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">09</span><span class="prompt-type">Checkout Simples</span></div>
+            <div class="prompt-title">Página de Oferta Direta</div>
+            <div class="prompt-text">Crie página de oferta direta para consulta online. Título, 3 benefícios rápidos, preço com destaque, botão "Agendar Agora" (link WhatsApp ou checkout), garantia 7 dias. Design focado em ação imediata. HTML/CSS puro.</div>
+            <div class="prompt-tip">💡 Mantenha apenas 1 CTA visível acima da dobra para evitar distração.</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">10</span><span class="prompt-type">FAQ/Suporte</span></div>
+            <div class="prompt-title">Página de Perguntas Frequentes</div>
+            <div class="prompt-text">Gere página com 6 perguntas frequentes sobre acompanhamento nutricional online. Accordion JS simples, design limpo, rodapé com link de contato. Responsivo, sem dependências externas.</div>
+            <div class="prompt-tip">💡 Adicione `max-width: 600px` e margens automáticas para leitura confortável.</div>
+        </div>
+    </div>
+
+    <div class="page section">
+        <div class="section-title">🟡 Marketing Digital & Produtividade</div>
+        <div class="section-subtitle">10 prompts para criadores, afiliados, infoprodutores e gestores</div>
+
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">11</span><span class="prompt-type">Link/Bio</span></div>
+            <div class="prompt-title">Bio Otimizada para Conversão</div>
+            <div class="prompt-text">Crie página de links para [Nome], especialista em marketing de conteúdo. Foto, tagline, 5 botões com ícones SVG simples para: Grupo Gratuito, Curso, YouTube, Newsletter, WhatsApp. Design dark mode opcional, cores [Cor]. HTML/CSS puro.</div>
+        </div>
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">12</span><span class="prompt-type">Captura</span></div>
+            <div class="prompt-title">Isca: Planilha de Conteúdo</div>
+            <div class="prompt-text">Squeeze page para "Planilha 30 Dias de Conteúdo Pronto". Headline focada em dor (bloqueio criativo), formulário curto, mockup da planilha, selo "Gratuito", CTA. Design moderno, cores [Cor]. HTML/CSS/JS responsivo.</div>
+        </div>
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">13</span><span class="prompt-type">Vendas</span></div>
+            <div class="prompt-title">Página de Curso Online</div>
+            <div class="prompt-text">Página de vendas para "Método Foco Total". Hero, para quem é, módulos grid, depoimentos, oferta com garantia 7d, FAQ accordion. Design [Cor Principal] e branco. Código leve, otimizado para mobile.</div>
+        </div>
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">14</span><span class="prompt-type">Aula Gratuita</span></div>
+            <div class="prompt-title">Página de Aula Magna</div>
+            <div class="prompt-text">Desenvolva página para aula "Como Criar Conteúdo que Vende Todo Dia". Vídeo placeholder, botão play centralizado, formulário abaixo para receber resumo em PDF. Design clean, mobile-first.</div>
+        </div>
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">15</span><span class="prompt-type">Lista de Espera</span></div>
+            <div class="prompt-title">Lançamento de Mentoria</div>
+            <div class="prompt-text">Página de lista de espera para mentoria "Estratégia Digital". Headline, contador regressivo, formulário, aviso de vagas limitadas. Design premium, cores [Cor]. HTML/CSS/JS puro.</div>
+        </div>
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">16</span><span class="prompt-type">Obrigado</span></div>
+            <div class="prompt-title">Confirmação de Cadastro</div>
+            <div class="prompt-text">Página de agradecimento pós-inscrição. Mensagem clara, botão para Telegram, link de download, rodapé com política de privacidade. Design simples, cores neutras.</div>
+        </div>
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">17</span><span class="prompt-type">Prova Social</span></div>
+            <div class="prompt-title">Mural de Resultados</div>
+            <div class="prompt-text">Página com grid de prints/depoimentos de alunos. Layout masonry simples com CSS, botão CTA fixo. Responsivo, sem JS pesado.</div>
+        </div>
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">18</span><span class="prompt-type">Webinar</span></div>
+            <div class="prompt-title">Evento de Tráfego Pago</div>
+            <div class="prompt-text">Página para live "Tráfego Pago para Iniciantes". Data, horário, contador, formulário, botão Google Calendar. Design focado em ação imediata.</div>
+        </div>
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">19</span><span class="prompt-type">Oferta Direta</span></div>
+            <div class="prompt-title">Página de Venda de Template</div>
+            <div class="prompt-text">Página focada em venda de pack de templates Notion. 3 prints de preview, preço, botão de checkout, garantia. Design minimalista, cores [Cor].</div>
+        </div>
+        <div class="prompt-card">
+            <div class="prompt-header"><span class="prompt-tag">20</span><span class="prompt-type">FAQ</span></div>
+            <div class="prompt-title">Suporte ao Produto</div>
+            <div class="prompt-text">Página de perguntas sobre acesso, reembolso, suporte e atualizações. Accordion JS, design clean, link de e-mail no rodapé.</div>
+        </div>
+    </div>
+
+    <div class="page section">
+        <div class="section-title">🟠 Beleza & Estética</div>
+        <div class="section-subtitle">10 prompts para esteticistas, maquiadores, designers de sobrancelhas e clínicas</div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">21</span><span class="prompt-type">Link/Bio</span></div><div class="prompt-title">Bio para Agendamento</div><div class="prompt-text">Página de links para [Nome], especialista em design de sobrancelhas. Foto, título, botões para: WhatsApp, Catálogo de Serviços, Agendamento Online, Instagram, Depoimentos. Design elegante, tons [Cor] e off-white. HTML/CSS puro.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">22</span><span class="prompt-type">Captura</span></div><div class="prompt-title">Isca: Checklist Skincare</div><div class="prompt-text">Squeeze page para "Checklist de Rotina Skincare para Pele Madura". Headline emocional, formulário apenas e-mail, mockup PDF, 3 bullets, selo 100% gratuito. Design minimalista, cores [Cor].</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">23</span><span class="prompt-type">Vendas</span></div><div class="prompt-title">Página de Curso Online</div><div class="prompt-text">Página de vendas para "Glow Up Digital" (curso para esteticistas). Hero, módulos grid, prova social, oferta com garantia, FAQ. Design sofisticado, cores [Cor Principal] e branco.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">24</span><span class="prompt-type">Aula Gratuita</span></div><div class="prompt-title">Masterclass de Técnicas</div><div class="prompt-text">Página para aula "3 Técnicas de Micropigmentação sem Dor". Vídeo, formulário para material extra, CTA. Design acolhedor, mobile-first.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">25</span><span class="prompt-type">Lista de Espera</span></div><div class="prompt-title">Pré-venda de Kit Profissional</div><div class="prompt-text">Página de lista de espera para lançamento de kit. Headline, contador, formulário, aviso anti-spam. Design premium, tons [Cor].</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">26</span><span class="prompt-type">Obrigado</span></div><div class="prompt-title">Confirmação de Agendamento</div><div class="prompt-text">Página pós-cadastro. Mensagem, botão adicionar agenda, link WhatsApp, rodapé. Simples e rápido.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">27</span><span class="prompt-type">Prova Social</span></div><div class="prompt-title">Antes & Depois</div><div class="prompt-text">Grid de imagens comparativas com legenda, botão "Quero Esse Resultado". Layout responsivo, cores neutras.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">28</span><span class="prompt-type">Webinar</span></div><div class="prompt-title">Live de Tendências</div><div class="prompt-text">Página para live "Tendências de Beleza 2025". Data, contador, formulário, botão Calendar. Design moderno.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">29</span><span class="prompt-type">Oferta Direta</span></div><div class="prompt-title">Venda de Curso Express</div><div class="prompt-text">Página focada em compra rápida. Título, 3 benefícios, preço, botão checkout, garantia. Design clean.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">30</span><span class="prompt-type">FAQ</span></div><div class="prompt-title">Pós-Procedimento</div><div class="prompt-text">Página com cuidados pós-procedimento em accordion. Design informativo, fácil leitura.</div></div>
+    </div>
+
+    <div class="page section">
+        <div class="section-title">🔵 Finanças & Investimentos</div>
+        <div class="section-subtitle">10 prompts para educadores financeiros, consultores e traders</div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">31</span><span class="prompt-type">Link/Bio</span></div><div class="prompt-title">Bio para Consultoria</div><div class="prompt-text">Página de links para [Nome], educador financeiro. Foto, tagline, botões: Planilha Gratuita, Grupo Telegram, YouTube, Instagram, Consultoria. Design sóbrio, cores [Cor].</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">32</span><span class="prompt-type">Captura</span></div><div class="prompt-title">Isca: Planilha de Orçamento</div><div class="prompt-text">Squeeze page para "Planilha Orçamento Familiar Sem Estresse". Headline focada em controle, formulário curto, mockup, bullets. Design profissional, cores [Cor].</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">33</span><span class="prompt-type">Vendas</span></div><div class="prompt-title">Página de Curso Investidor</div><div class="prompt-text">Página de vendas para "Investidor Iniciante Seguro". Hero, dor/solução, módulos, bônus, preço comparativo, garantia 7d. Design confiável, [Cor] e dourado.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">34</span><span class="prompt-type">Aula Gratuita</span></div><div class="prompt-title">Masterclass de Renda Fixa</div><div class="prompt-text">Página para aula "Como Render Mais que a Poupança". Vídeo, formulário para e-book, CTA. Design clean, mobile-first.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">35</span><span class="prompt-type">Lista de Espera</span></div><div class="prompt-title">Lançamento de Grupo VIP</div><div class="prompt-text">Página de lista para "Clube de Investidores". Contador, formulário, aviso vagas limitadas. Design premium.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">36</span><span class="prompt-type">Obrigado</span></div><div class="prompt-title">Confirmação de Acesso</div><div class="prompt-text">Página pós-compra. Mensagem, link da área de membros, suporte WhatsApp, rodapé. Simples e direto.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">37</span><span class="prompt-type">Prova Social</span></div><div class="prompt-title">Histórias de Sucesso</div><div class="prompt-text">Página com depoimentos de alunos sobre resultados financeiros. Grid responsivo, cores sóbrias.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">38</span><span class="prompt-type">Webinar</span></div><div class="prompt-title">Live de Análise de Mercado</div><div class="prompt-text">Página para evento "Mercado Financeiro em 2025". Data, contador, formulário, botão Calendar. Design profissional.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">39</span><span class="prompt-type">Oferta Direta</span></div><div class="prompt-title">Venda de Mentoria 1:1</div><div class="prompt-text">Página focada em agendamento de sessão estratégica. Título, benefícios, preço, botão WhatsApp, garantia. Design executivo.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">40</span><span class="prompt-type">FAQ</span></div><div class="prompt-title">Dúvidas sobre Investimentos</div><div class="prompt-text">Página com perguntas sobre risco, liquidez, corretora e suporte. Accordion JS, design informativo.</div></div>
+    </div>
+
+    <div class="page section">
+        <div class="section-title">🟣 Educação Infantil & Parentalidade</div>
+        <div class="section-subtitle">10 prompts para pedagogos, psicólogos infantis e criadores de conteúdo familiar</div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">41</span><span class="prompt-type">Link/Bio</span></div><div class="prompt-title">Bio para Educadores</div><div class="prompt-text">Página de links para [Nome], pedagoga especialista em desenvolvimento infantil. Foto, título, botões: E-book, Curso, Instagram, YouTube, Contato. Design acolhedor, cores pastéis.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">42</span><span class="prompt-type">Captura</span></div><div class="prompt-title">Isca: Guia de Rotina Infantil</div><div class="prompt-text">Squeeze page para "Guia de Rotina Sem Brigas". Headline emocional, formulário curto, mockup, bullets. Design suave, cores [Cor].</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">43</span><span class="prompt-type">Vendas</span></div><div class="prompt-title">Página de Curso Montessori</div><div class="prompt-text">Página de vendas para "Montessori em Casa". Hero, módulos grid, depoimentos de pais, oferta com garantia, FAQ. Design clean, tons terrosos.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">44</span><span class="prompt-type">Aula Gratuita</span></div><div class="prompt-title">Masterclass para Pais</div><div class="prompt-text">Página para aula "Como Ensinar seu Filho a Ler Antes dos 6". Vídeo, formulário, CTA. Design arredondado, acolhedor.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">45</span><span class="prompt-type">Lista de Espera</span></div><div class="prompt-title">Lançamento de Grupo de Apoio</div><div class="prompt-text">Página de lista para "Comunidade Mães Conscientes". Contador, formulário, aviso. Design premium, cores suaves.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">46</span><span class="prompt-type">Obrigado</span></div><div class="prompt-title">Confirmação de Inscrição</div><div class="prompt-text">Página pós-cadastro. Mensagem, link comunidade, botão WhatsApp. Simples e amigável.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">47</span><span class="prompt-type">Prova Social</span></div><div class="prompt-title">Relatos de Famílias</div><div class="prompt-text">Página com depoimentos de pais sobre mudanças no comportamento das crianças. Grid responsivo.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">48</span><span class="prompt-type">Webinar</span></div><div class="prompt-title">Live de Desenvolvimento</div><div class="prompt-text">Página para evento "Fases do Aprendizado 0-6". Data, contador, formulário, botão Calendar.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">49</span><span class="prompt-type">Oferta Direta</span></div><div class="prompt-title">Venda de Kit de Atividades</div><div class="prompt-text">Página focada em venda de PDF imprimível. 3 previews, preço, botão checkout, garantia. Design clean.</div></div>
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">50</span><span class="prompt-type">FAQ</span></div><div class="prompt-title">Dúvidas sobre Método</div><div class="prompt-text">Página com perguntas sobre aplicação prática, faixa etária, materiais e suporte. Accordion, design leve.</div></div>
+    </div>
+
+    <div class="page guide">
+        <h3>⚙️ Bônus: 10 Prompts de Otimização & Integração</h3>
+        <p>Use estes prompts após gerar a página base. Eles adicionam funcionalidades profissionais sem complicação.</p>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">O1</span><span class="prompt-type">Integração</span></div><div class="prompt-title">Formulário → E-mail Automático</div><div class="prompt-text">Adicione ao formulário HTML existente o atributo action="https://formspree.io/f/[SEU_ID]" e method="POST". Inclua mensagem de sucesso e redirecionamento para página de obrigado. Não use backend.</div></div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">O2</span><span class="prompt-type">Performance</span></div><div class="prompt-title">Otimização para Carregamento Rápido</div><div class="prompt-text">Minimize o CSS e JS inline. Remova fontes externas e use system-ui. Comprima imagens com placeholder base64 se necessário. Mantenha o arquivo único abaixo de 50KB.</div></div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">O3</span><span class="prompt-type">SEO Básico</span></div><div class="prompt-title">Meta Tags & Acessibilidade</div><div class="prompt-text">Adicione `<title>`, `<meta name="description">`, `<meta name="viewport">`, e `alt` em todas as imagens. Use `aria-label` nos botões e `lang="pt-BR"` no HTML.</div></div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">O4</span><span class="prompt-type">Mobile</span></div><div class="prompt-title">Ajuste Responsivo Fino</div><div class="prompt-text">Adicione `@media (max-width: 480px)` para ajustar padding, font-size e empilhar grids. Mantenha botões com `min-height: 48px` para toque.</div></div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">O5</span><span class="prompt-type">Analytics</span></div><div class="prompt-title">Pixel de Rastreamento Simples</div><div class="prompt-text">Inclua apenas o snippet do Google Tag Manager ou Pixel do Meta no `<head>`. Não adicione scripts de tracking pesado. Mantenha o peso total da página leve.</div></div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">O6</span><span class="prompt-type">Conversão</span></div><div class="prompt-title">CTA Flutuante Mobile</div><div class="prompt-text">Adicione um botão fixo na parte inferior para telas < 768px. Cor [Cor CTA], texto "Quero Acessar Agora", link para checkout. Use `position: fixed; bottom: 0; left: 0; right: 0;`.</div></div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">O7</span><span class="prompt-type">Dark Mode</span></div><div class="prompt-title">Modo Escuro Automático</div><div class="prompt-text">Use `@media (prefers-color-scheme: dark)` para inverter cores de fundo/texto mantendo contraste. Adicione `color-scheme: light dark;` no root.</div></div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">O8</span><span class="prompt-type">WhatsApp</span></div><div class="prompt-title">Botão de Atendimento Flutuante</div><div class="prompt-text">Adicone ícone SVG do WhatsApp fixo no canto inferior direito. Link: `https://wa.me/55[SEU_NUMERO]?text=Olá,%20vi%20a%20página%20e%20quero%20saber%20mais`. Animação suave de entrada.</div></div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">O9</span><span class="prompt-type">Backup</span></div><div class="prompt-title">Exportar para ZIP</div><div class="prompt-text">Instrua a IA a gerar um arquivo HTML único com CSS e JS inline. Nomeie como `index.html`. Pronta para subir em qualquer hospedagem estática gratuita.</div></div>
+
+        <div class="prompt-card"><div class="prompt-header"><span class="prompt-tag">O10</span><span class="prompt-type">Teste</span></div><div class="prompt-title">Validação Automática</div><div class="prompt-text">Após gerar, peça à IA: "Verifique se não há tags não fechadas, se o CSS está válido, e se o JS roda sem erros no console. Liste possíveis melhorias de acessibilidade."</div></div>
+    </div>
+
+    <div class="page guide">
+        <h3>🛠️ Guia Rápido: Da IA ao Ar em 5 Minutos</h3>
+        <ol style="margin-left: 20px; line-height: 2;">
+            <li><strong>Copie</strong> o prompt desejado deste material.</li>
+            <li><strong>Substitua</strong> os campos entre colchetes pelos seus dados reais.</li>
+            <li><strong>Cole</strong> no ChatGPT/Claude/Gemini e envie.</li>
+            <li><strong>Copie</strong> o código HTML gerado e salve como `index.html`.</li>
+            <li><strong>Acesse</strong> <code>netlify.com/drop</code> ou <code>vercel.com/new</code>.</li>
+            <li><strong>Arraste</strong> a pasta com o arquivo para a plataforma.</li>
+            <li><strong>Pronto.</strong> Sua página está no ar com link gratuito e SSL.</li>
+        </ol>
+        <p style="margin-top: 24px; text-align: center; font-weight: 600; color: var(--accent);">🎯 Você não precisa de domínio, hospedagem paga ou conhecimento técnico.<br>Apenas clareza, IA e este material.</p>
+    </div>
+
+    <div class="page footer-note">
+        <p>© 2025 Página no Ar com IA — Material exclusivo para alunos.<br>Proibida a reprodução ou comercialização sem autorização.</p>
+        <p style="margin-top: 8px;">Dúvidas? Suporte: <a href="#" style="color: var(--accent);">contato@paginaaar.com</a></p>
+    </div>
+
+</body>
+</html>

@@ -8,18 +8,22 @@
       name="description"
       content="Entre na lista de espera para receber novidades sobre a proxima turma."
     >
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
       :root {
-        --bg: #f7f3ea;
-        --surface: #fffdf8;
-        --ink: #1e2930;
-        --muted: #5d6b72;
-        --line: #ded6c8;
-        --brand: #0f766e;
-        --brand-dark: #115e59;
-        --accent: #f5b942;
-        --danger: #b42318;
-        --success: #137333;
+        --bg: #0f0f1a;
+        --surface: #16162a;
+        --input: #1a1a2e;
+        --ink: #ffffff;
+        --muted: #d1d5db;
+        --line: rgba(255, 255, 255, 0.08);
+        --brand: #06d6a0;
+        --brand-dark: #05b588;
+        --accent: #7c3aed;
+        --accent-light: #a78bfa;
+        --dark: #0f0f1a;
+        --danger: #f87171;
+        --success: #06d6a0;
       }
 
       * {
@@ -31,7 +35,7 @@
         min-height: 100vh;
         background: var(--bg);
         color: var(--ink);
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
         line-height: 1.5;
       }
 
@@ -55,7 +59,7 @@
 
       .eyebrow {
         margin: 0 0 12px;
-        color: var(--brand-dark);
+        color: var(--accent-light);
         font-size: 0.82rem;
         font-weight: 700;
         letter-spacing: 0;
@@ -99,7 +103,7 @@
         flex: 0 0 24px;
         border-radius: 50%;
         background: var(--accent);
-        color: var(--ink);
+        color: #ffffff;
         font-weight: 700;
       }
 
@@ -108,7 +112,7 @@
         border: 1px solid var(--line);
         border-radius: 8px;
         padding: 20px;
-        box-shadow: 0 18px 44px rgba(30, 41, 48, 0.08);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
       }
 
       .form-panel h2 {
@@ -138,14 +142,14 @@
         width: 100%;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: #ffffff;
+        background: var(--input);
         color: var(--ink);
         font: inherit;
         padding: 13px 12px;
       }
 
       input:focus {
-        outline: 3px solid rgba(15, 118, 110, 0.2);
+        outline: 3px solid rgba(124, 58, 237, 0.25);
         border-color: var(--brand);
       }
 
@@ -153,7 +157,7 @@
         border: 0;
         border-radius: 8px;
         background: var(--brand);
-        color: #ffffff;
+        color: var(--dark);
         cursor: pointer;
         font: inherit;
         font-weight: 700;

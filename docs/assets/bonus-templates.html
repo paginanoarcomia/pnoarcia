@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bônus #2: 10 Templates Editáveis de Alta Conversão</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F0F1A; --text: #FFFFFF; --text-light: #D1D5DB; --text-muted: #9CA3AF;
+            --accent: #7C3AED; --accent-light: #A78BFA; --accent-bg: rgba(124, 58, 237, 0.15);
+            --teal: #06D6A0; --teal-bg: rgba(6, 214, 160, 0.12);
+            --orange: #FBBF24; --orange-bg: rgba(251, 191, 36, 0.12);
+            --border: rgba(255, 255, 255, 0.08); --card-bg: #16162A; --code-bg: #1A1A2E;
+            --dark: #0F0F1A;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.55; font-size: 14px;
+        }
+        .page { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+        .cover { text-align: center; padding: 90px 24px 60px; page-break-after: always; border-bottom: 3px solid var(--accent); }
+        .cover h1 { font-size: 32px; font-weight: 900; color: var(--accent-light); margin-bottom: 8px; line-height: 1.2; }
+        .cover .badge { display: inline-block; background: var(--teal); color: var(--dark); padding: 6px 16px; border-radius: 6px; font-weight: 700; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+        .cover h2 { font-size: 19px; font-weight: 600; color: var(--text-light); margin-bottom: 24px; }
+        .cover .note { font-size: 13px; color: var(--text-muted); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+        .guide { page-break-after: always; padding: 40px 0; }
+        .guide h3 { font-size: 21px; font-weight: 800; margin-bottom: 16px; }
+        .guide p { margin-bottom: 12px; color: var(--text-light); }
+        .guide ul { margin-left: 18px; margin-bottom: 16px; }
+        .guide li { margin-bottom: 6px; }
+
+        .niche-title { font-size: 22px; font-weight: 800; color: var(--accent); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+        .niche-sub { font-size: 14px; color: var(--text-light); margin-bottom: 24px; }
+
+        .template-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; page-break-inside: avoid; }
+        .template-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .template-tag { background: var(--teal-bg); color: var(--teal); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+        .template-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+
+        .wireframe { background: var(--code-bg); padding: 12px; border-radius: 8px; font-family: monospace; font-size: 12px; line-height: 1.6; color: var(--text); margin-bottom: 12px; white-space: pre-wrap; border-left: 3px solid var(--teal); }
+
+        .checklist-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+        .checklist-mini div { font-size: 12px; color: var(--text-light); display: flex; align-items: center; gap: 6px; }
+        .checklist-mini div::before { content: "✓"; color: var(--teal); font-weight: 700; }
+
+        .prompt-box { background: var(--accent-bg); padding: 12px; border-radius: 8px; font-family: monospace; font-size: 12.5px; line-height: 1.6; color: var(--text); margin-bottom: 10px; }
+
+        .tip-box { background: var(--teal-bg); border-left: 3px solid var(--teal); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 12px; color: var(--text); margin-top: 8px; }
+        .warning-box { background: var(--orange-bg); border-left: 3px solid var(--orange); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 12px; color: var(--text); margin-top: 8px; }
+
+        .adapt-box { background: linear-gradient(135deg, var(--accent-bg), var(--teal-bg)); border: 1px solid var(--accent-light); border-radius: 12px; padding: 20px; margin-top: 24px; }
+        .adapt-box h4 { font-size: 18px; font-weight: 800; color: var(--accent); margin-bottom: 12px; }
+        .adapt-box ol { margin-left: 18px; }
+        .adapt-box li { margin-bottom: 8px; font-size: 14px; color: var(--text); }
+
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px; }
+
+        @media print {
+            body { background: white; color: black; }
+            :root {
+                --text: #111827; --text-light: #4B5563; --text-muted: #9CA3AF;
+                --accent-bg: #F5F3FF; --teal-bg: #F0FDFA; --orange-bg: #FFF7ED;
+                --border: #E5E7EB; --card-bg: #F9FAFB; --code-bg: #F3F4F6;
+            }
+            .page { max-width: 100%; padding: 0; }
+            .cover, .guide, .footer-note { padding: 20px; }
+            .template-card, .wireframe, .prompt-box, .tip-box, .warning-box { page-break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .niche-title { page-break-before: always; }
+            .niche-title:first-of-type { page-break-before: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page cover">
+        <div class="badge">BÔNUS #2 — TEMPLATES</div>
+        <h1>10 Templates Editáveis<br>de Alta Conversão</h1>
+        <h2>Estruturas testadas para 5 nichos. Basta copiar, colar na IA e personalizar.</h2>
+        <p class="note">Material complementar ao curso <strong>Página no Ar com IA</strong>.<br>Cada template inclui wireframe, checklist de conversão e prompt pronto para IA.</p>
+    </div>
+
+    <div class="page guide">
+        <h3>📌 Como Usar Estes Templates</h3>
+        <p>Estes <strong>não são arquivos prontos para baixar</strong>. São <strong>estruturas arquiteturais</strong> projetadas para converter. Você vai:</p>
+        <ul>
+            <li><strong>Escolher</strong> o template que corresponde ao seu objetivo e nicho.</li>
+            <li><strong>Copiar o prompt</strong> já formatado no final de cada template.</li>
+            <li><strong>Colar na IA</strong> (ChatGPT, Claude, Gemini). Ela gera o HTML/CSS/JS completo.</li>
+            <li><strong>Salvar como <code>index.html</code></strong> e subir no Netlify/Vercel (ensinado no curso).</li>
+        </ul>
+        <p>💡 <strong>Diferencial:</strong> Cada template já inclui <strong>gatilhos de conversão embutidos</strong> (prova social, urgência, clareza de CTA, hierarquia visual). A IA só precisa seguir a arquitetura.</p>
+    </div>
+
+    <div class="page">
+        <div class="niche-title">🟢 Emagrecimento & Saúde</div>
+        <div class="niche-sub">Nutricionistas, personal trainers, coaches de bem-estar</div>
+
+        <div class="template-card">
+            <div class="template-header"><span class="template-tag">Template 01</span><span style="font-size:12px;color:var(--text-muted)">Tipo: Captura de Leads</span></div>
+            <div class="template-title">Squeeze Page para E-book/Checklist Gratuito</div>
+            <div class="wireframe">[HEADER] Logo/Nome | [HERO] Título forte + Subtítulo benefício | [MOCKUP] Div estilizada do PDF | [FORM] Nome + E-mail + Botão CTA | [BULLETS] 3 vantagens rápidas | [SOCIAL] 1 depoimento curto | [FOOTER] Copyright + Link privacidade</div>
+            <div class="checklist-mini">
+                <div>Headline focada na dor</div><div>Formulário curto (máx 2 campos)</div>
+                <div>Botão CTA com cor de contraste</div><div>Mockup visual do PDF</div>
+            </div>
+            <div class="prompt-box">"Crie uma squeeze page para capturar e-mails oferecendo o e-book '[NOME]'. Estrutura: hero com headline emocional, subtítulo com benefício, mockup simples do PDF à esquerda, formulário (Nome + E-mail) à direita, 3 bullets de benefícios, 1 depoimento curto. Design: tons de [COR_PRINCIPAL] e off-white, mobile-first. HTML/CSS/JS puro, sem frameworks, pronto para hospedagem estática."</div>
+            <div class="tip-box">💡 Use apenas 1 campo (e-mail) se quiser maximizar conversão. Nome pode ser pedido na página de obrigado.</div>
+        </div>
+
+        <div class="template-card">
+            <div class="template-header"><span class="template-tag">Template 02</span><span style="font-size:12px;color:var(--text-muted)">Tipo: Página de Vendas</span></div>
+            <div class="template-title">Página de Vendas para Mentoria/Programa</div>
+            <div class="wireframe">[HERO] Headline + Sub + CTA | [DOR] 3 cards "Isso é pra você se..." | [SOLUÇÃO] Grid 4 módulos | [PROVA] 3 depoimentos com foto/avatar | [OFERTA] Preço riscado → atual → garantia 7d → botão compra | [FAQ] 3 perguntas accordion</div>
+            <div class="checklist-mini">
+                <div>Preço com âncora visual</div><div>Garantia visível abaixo do CTA</div>
+                <div>Depoimentos reais (nome + cidade)</div><div>Apenas 1 CTA repetido</div>
+            </div>
+            <div class="prompt-box">"Gere uma página de vendas para a mentoria '[NOME]'. Estrutura: hero com headline impactante + CTA, seção 'Isso é pra você se...' (3 cards), grid de 4 módulos, prova social (3 depoimentos com avatar), oferta com preço riscado/atual, garantia de 7 dias, FAQ accordion (3 perguntas). Design: fundo [COR_FUNDO], botões [COR_CTA], tipografia clean. HTML/CSS/JS puro, otimizado para conversão."</div>
+            <div class="warning-box">⚠️ Não adicione múltiplos botões de compra em cores diferentes. Mantenha o mesmo CTA para não dividir atenção.</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="niche-title">🟡 Marketing Digital & Produtividade</div>
+        <div class="niche-sub">Criadores, afiliados, gestores, infoprodutores</div>
+
+        <div class="template-card">
+            <div class="template-header"><span class="template-tag">Template 03</span><span style="font-size:12px;color:var(--text-muted)">Tipo: Link/Bio</span></div>
+            <div class="template-title">Bio Otimizada para Conversão (Estilo Linktree)</div>
+            <div class="wireframe">[FOTO] Circular + Nome + Tagline | [BOTÕES] 5 links arredondados com ícones SVG | [DESTAQUE] 1 botão com cor de contraste (ex: "Grupo Gratuito") | [SOCIAL] Contador de membros/alunos | [FOOTER] © + Links sociais pequenos</div>
+            <div class="checklist-mini">
+                <div>Botão principal em destaque</div><div>Ícones simples (SVG inline)</div>
+                <div>Carregamento < 2s</div><div>Hover suave nos botões</div>
+            </div>
+            <div class="prompt-box">"Crie uma página de links/bio para [NOME], especialista em [NICHO]. Estrutura: foto circular, nome + tagline, 5 botões arredondados com ícones SVG inline para [LINK1], [LINK2], [LINK3], [LINK4], [LINK5]. Um botão em destaque com cor [COR_DESTAQUE]. Design: [COR_PRINCIPAL] e branco, mobile-first, sem dependências externas. HTML/CSS puro."</div>
+            <div class="tip-box">💡 Coloque o link de maior conversão (checkout ou grupo) em primeiro ou segundo lugar. A queda de cliques é real.</div>
+        </div>
+
+        <div class="template-card">
+            <div class="template-header"><span class="template-tag">Template 04</span><span style="font-size:12px;color:var(--text-muted)">Tipo: Aula Gratuita + Captura</span></div>
+            <div class="template-title">Página de Aula Magna com Lead Capture</div>
+            <div class="wireframe">[HERO] Título + "Assista à aula gratuita" | [VÍDEO] Placeholder iframe/div play | [FORM] Nome + E-mail abaixo do vídeo | [CTA] "Quero acesso ao material extra" | [FOOTER] Links sociais</div>
+            <div class="checklist-mini">
+                <div>Vídeo acima da dobra</div><div>Formulário só após clique/scroll</div>
+                <div>Botão com texto de benefício</div><div>Isca clara (PDF/Planilha)</div>
+            </div>
+            <div class="prompt-box">"Desenvolva página para aula gratuita '[TÍTULO]'. Estrutura: hero com título, área de vídeo placeholder (iframe YouTube ou div play), formulário (Nome + E-mail) abaixo para receber material complementar, CTA 'Quero Meu Material'. Design: fundo branco, detalhes [COR_PRINCIPAL], fontes legíveis, mobile-first. HTML/CSS/JS puro."</div>
+            <div class="warning-box">⚠️ Não use autoplay no vídeo. Deixe o visitante clicar. Autoplay aumenta bounce rate em mobile.</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="niche-title">🟠 Beleza & Estética</div>
+        <div class="niche-sub">Esteticistas, maquiadores, designers, clínicas</div>
+
+        <div class="template-card">
+            <div class="template-header"><span class="template-tag">Template 05</span><span style="font-size:12px;color:var(--text-muted)">Tipo: Lista de Espera</span></div>
+            <div class="template-title">Pré-Lançamento com Contagem Regressiva</div>
+            <div class="wireframe">[HERO] "As vagas ainda não abriram..." + Sub | [CONTADOR] Dias/Horas/Min/Seg (JS) | [FORM] Nome + E-mail + WhatsApp | [CTA] "Entrar na Lista VIP" | [AVISO] "Vagas limitadas. Sem spam."</div>
+            <div class="checklist-mini">
+                <div>Contador funcional em JS</div><div>Formulário com WhatsApp (opcional)</div>
+                <div>Copy de escassez realista</div><div>Design elegante/sofisticado</div>
+            </div>
+            <div class="prompt-box">"Crie página de lista de espera para [NOME DO PRODUTO]. Headline de urgência, subheadline, formulário (Nome/E-mail/WhatsApp), contador regressivo visual (dias/horas/min/seg) com JS simples, botão 'Entrar na Lista VIP', aviso anti-spam. Design: tons [COR1] e [COR2], elegante, mobile-first. HTML/CSS/JS puro."</div>
+            <div class="tip-box">💡 Use a data real do lançamento. Contadores falsos geram desconfiança e quebram conversão a longo prazo.</div>
+        </div>
+
+        <div class="template-card">
+            <div class="template-header"><span class="template-tag">Template 06</span><span style="font-size:12px;color:var(--text-muted)">Tipo: Depoimentos + Agendamento</span></div>
+            <div class="template-title">Página de Resultados com CTA para WhatsApp</div>
+            <div class="wireframe">[HERO] "Transforme [RESULTADO] em [TEMPO]" | [GALERIA] Grid 3x2 de prints/antes-depois | [DEPOIMENTOS] 3 cards com nome + cidade | [CTA FIXO] "Quero Esse Resultado" → WhatsApp | [FOOTER] Endereço/Atendimento</div>
+            <div class="checklist-mini">
+                <div>Imagens otimizadas (lazy load)</div><div>Botão fixo em mobile</div>
+                <div>Links diretos para agenda</div><div>Layout clean, sem poluição</div>
+            </div>
+            <div class="prompt-box">"Gere página focada em prova social para [PROFISSIONAL]. Hero com headline, grid 3x2 de imagens (placeholder), 3 depoimentos curtos com nome/cidade, botão CTA fixo no rodapé para WhatsApp. Design: cores neutras + [COR_DESTAQUE], espaçamento generoso, responsivo. HTML/CSS/JS puro."</div>
+            <div class="warning-box">⚠️ Peça à IA para adicionar `loading="lazy"` nas imagens. Isso evita carregamento lento e melhora SEO/Core Web Vitals.</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="niche-title">🔵 Finanças & Investimentos</div>
+        <div class="niche-sub">Educadores financeiros, consultores, traders, contadores</div>
+
+        <div class="template-card">
+            <div class="template-header"><span class="template-tag">Template 07</span><span style="font-size:12px;color:var(--text-muted)">Tipo: Página de Vendas</span></div>
+            <div class="template-title">Página de Curso Online com Âncora de Preço</div>
+            <div class="wireframe">[HERO] Headline + Sub + CTA | [DOR/SOLUÇÃO] Texto + 3 cards | [BÔNUS] Lista com ícones | [OFERTA] "Valor real: R$X" riscado → "Hoje: R$Y" → Garantia 7d | [FAQ] 4 perguntas accordion</div>
+            <div class="checklist-mini">
+                <div>Preço com âncora clara</div><div>Garantia visível e simples</div>
+                <div>Foco em segurança/confiança</div><div>CTA repetido 2x (hero + oferta)</div>
+            </div>
+            <div class="prompt-box">"Crie página de vendas para o curso '[NOME]'. Hero com headline + CTA, seção dor/solução com 3 cards, lista de bônus com ícones, oferta com preço riscado/atual, garantia 7 dias, FAQ accordion (4 perguntas). Design: [COR_PRINCIPAL] e branco, profissional, confiável, mobile-first. HTML/CSS/JS puro."</div>
+            <div class="tip-box">💡 Use cores sóbrias (azul escuro, cinza, dourado). Nicho financeiro converte melhor com design que transmite estabilidade.</div>
+        </div>
+
+        <div class="template-card">
+            <div class="template-header"><span class="template-tag">Template 08</span><span style="font-size:12px;color:var(--text-muted)">Tipo: Oferta Direta</span></div>
+            <div class="template-title">Página de Venda de Consultoria 1:1</div>
+            <div class="wireframe">[HERO] Título + 3 benefícios rápidos | [PREÇO] Destaque central + "Vagas limitadas" | [CTA] Botão grande → WhatsApp/Calendly | [GARANTIA] "Satisfação ou devolução" | [FOOTER] Contato</div>
+            <div class="checklist-mini">
+                <div>Foco em ação imediata</div><div>Escassez real (vagas/horários)</div>
+                <div>Link direto para agendamento</div><div>Texto curto, sem enrolação</div>
+            </div>
+            <div class="prompt-box">"Desenvolva página de oferta direta para consultoria 1:1 '[NOME]'. Título, 3 benefícios rápidos, preço em destaque, aviso 'Vagas limitadas', botão CTA grande para WhatsApp/Calendly, garantia de satisfação. Design: clean, cores sóbrias, foco em conversão imediata. HTML/CSS puro."</div>
+            <div class="warning-box">⚠️ Não adicione formulários longos. Para consultoria, o caminho é: ver preço → clicar → agendar/conversar.</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="niche-title">🟣 Educação & Parentalidade</div>
+        <div class="niche-sub">Pedagogos, psicólogos infantis, criadores, escolas</div>
+
+        <div class="template-card">
+            <div class="template-header"><span class="template-tag">Template 09</span><span style="font-size:12px;color:var(--text-muted)">Tipo: Masterclass</span></div>
+            <div class="template-title">Página de Aula Gratuita para Pais</div>
+            <div class="wireframe">[HERO] Título emocional + "Assista à masterclass" | [VÍDEO] Área embed + play centralizado | [FORM] Nome + E-mail para material | [BULLETS] 3 aprendizados | [CTA] "Quero Receber o Material"</div>
+            <div class="checklist-mini">
+                <div>Tom acolhedor, sem pressão</div><div>Vídeo com controles padrão</div>
+                <div>Isca prática (guia/checklist)</div><div>Design suave (cores pastéis)</div>
+            </div>
+            <div class="prompt-box">"Crie página para aula gratuita '[TÍTULO]'. Hero com título, área de vídeo placeholder, formulário (Nome + E-mail) para receber material complementar, 3 bullets de aprendizados, CTA suave. Design: cores pastéis, fontes arredondadas, mobile-first. HTML/CSS/JS puro."</div>
+            <div class="tip-box">💡 Use palavras como "guia", "passo a passo", "sem julgamento". Público de parentalidade responde a empatia, não a urgência agressiva.</div>
+        </div>
+
+        <div class="template-card">
+            <div class="template-header"><span class="template-tag">Template 10</span><span style="font-size:12px;color:var(--text-muted)">Tipo: Lista de Espera</span></div>
+            <div class="template-title">Pré-venda de Comunidade/Grupo</div>
+            <div class="wireframe">[HERO] "Em breve: [NOME DA COMUNIDADE]" | [SUB] Benefício + data estimada | [FORM] Nome + E-mail + "Qual sua maior dificuldade?" (opcional) | [CTA] "Quero Ser Avisado Primeiro" | [AVISO] Sem spam, vagas limitadas</div>
+            <div class="checklist-mini">
+                <div>Antecipação + benefício claro</div><div>Pergunta opcional (qualificação)</div>
+                <div>Botão com tom de convite</div><div>Design clean, tons terrosos/pastéis</div>
+            </div>
+            <div class="prompt-box">"Gere página de lista de espera para comunidade '[NOME]'. Headline de antecipação, sub com benefício, formulário (Nome/E-mail + pergunta opcional de qualificação), botão 'Quero Ser Avisado Primeiro', aviso anti-spam. Design: cores suaves, layout centrado, mobile-first. HTML/CSS/JS puro."</div>
+            <div class="warning-box">⚠️ Não use "Últimas vagas" em comunidade. Use "Lista VIP" ou "Fundadores". Combina mais com o nicho.</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="adapt-box">
+            <h4>🔄 Como Adaptar Qualquer Template ao Seu Nicho em 3 Passos</h4>
+            <ol>
+                <li><strong>Substitua a linguagem, mantenha a estrutura.</strong> A arquitetura de conversão (Hero → Dor → Solução → Prova → CTA) funciona para qualquer mercado. Mude apenas as palavras e os exemplos.</li>
+                <li><strong>Ajuste o tom emocional.</strong> Saúde → urgência/benefício rápido. Finanças → segurança/clareza. Beleza → autoestima/transformação visual. Educação → acolhimento/evolução. Peça à IA: <span style="background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:12px">"Ajuste o tom da copy para [TOM]."</span></li>
+                <li><strong>Teste 1 elemento por vez.</strong> Mudou headline? Não mude cor e CTA no mesmo dia. A IA gera versões em segundos. Use isso a seu favor para otimizar com dados reais.</li>
+            </ol>
+        </div>
+        <div class="success-box" style="margin-top:24px;background:var(--teal-bg);border-left:3px solid var(--teal);padding:16px;border-radius:0 8px 8px 0;font-size:13px;color:#0F766E"><strong>🎯 Lembre-se:</strong> Template não é mágica. É arquitetura. A IA é a construtora. Você é o dono da obra. Combine os três e nenhuma plataforma paga vai te segurar.</div>
+    </div>
+
+    <div class="page footer-note">
+        <p>© 2025 Página no Ar com IA — Material exclusivo para alunos.<br>Proibida a reprodução ou comercialização sem autorização.</p>
+        <p style="margin-top: 8px;">Dúvidas? Suporte: <a href="#" style="color: var(--accent);">contato@paginaaar.com</a></p>
+    </div>
+
+</body>
+</html>
