@@ -3,29 +3,39 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Aula grátis</title>
+    <title>Aula Gratuita | Página no Ar com IA</title>
     <meta
       name="description"
-      content="Assista à aula gratuita e teste o código HTML da sua primeira página."
+      content="Assista à aula gratuita e aprenda como criar uma página de vendas completa usando inteligência artificial."
     >
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
       :root {
         --bg: #0f0f1a;
         --surface: #16162a;
-        --input: #1a1a2e;
+        --surface-2: #1a1a2e;
         --ink: #ffffff;
         --muted: #d1d5db;
+        --muted-2: #9ca3af;
         --line: rgba(255, 255, 255, 0.08);
         --brand: #06d6a0;
         --brand-dark: #05b588;
         --accent: #7c3aed;
         --accent-light: #a78bfa;
+        --danger: #ef4444;
         --dark: #0f0f1a;
+        --gradient: linear-gradient(135deg, #7c3aed, #06d6a0);
+        --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        --glow: 0 0 40px rgba(124, 58, 237, 0.28);
       }
 
       * {
         box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
@@ -35,10 +45,25 @@
         color: var(--ink);
         font-family: 'Inter', Arial, Helvetica, sans-serif;
         line-height: 1.5;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.22), transparent 32%),
+          radial-gradient(circle at 90% 20%, rgba(6, 214, 160, 0.16), transparent 30%),
+          radial-gradient(circle at 50% 100%, rgba(167, 139, 250, 0.12), transparent 34%);
+        z-index: 0;
       }
 
       main {
-        padding: 28px 18px;
+        position: relative;
+        z-index: 1;
+        padding: 28px 18px 42px;
       }
 
       .page {
@@ -48,29 +73,88 @@
         gap: 26px;
       }
 
-      .eyebrow {
-        margin: 0 0 12px;
-        color: var(--accent-light);
-        font-size: 0.82rem;
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 0;
+      }
+
+      .logo {
+        font-weight: 900;
+        font-size: 1rem;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .top-link {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.92rem;
         font-weight: 700;
-        letter-spacing: 0;
+      }
+
+      .top-link:hover {
+        color: var(--brand);
+      }
+
+      .hero {
+        padding: 34px 0 10px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 16px;
+        color: var(--accent-light);
+        background: rgba(124, 58, 237, 0.14);
+        border: 1px solid rgba(124, 58, 237, 0.28);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 0.78rem;
+        font-weight: 800;
         text-transform: uppercase;
       }
 
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand);
+        box-shadow: 0 0 16px rgba(6, 214, 160, 0.7);
+      }
+
       h1,
-      h2 {
+      h2,
+      h3 {
         margin: 0;
-        letter-spacing: 0;
+        letter-spacing: -0.03em;
       }
 
       h1 {
-        max-width: 760px;
-        font-size: clamp(2rem, 8vw, 4.15rem);
-        line-height: 1;
+        max-width: 900px;
+        font-size: clamp(2.15rem, 7vw, 4.8rem);
+        line-height: 0.98;
+      }
+
+      h1 span {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       h2 {
-        font-size: 1.35rem;
+        font-size: clamp(1.35rem, 3vw, 2.1rem);
+        line-height: 1.12;
+      }
+
+      h3 {
+        font-size: 1.05rem;
       }
 
       p {
@@ -78,21 +162,90 @@
       }
 
       .lead {
-        max-width: 640px;
-        margin: 18px 0 0;
-        font-size: 1.08rem;
+        max-width: 760px;
+        margin: 20px 0 0;
+        font-size: clamp(1rem, 2vw, 1.18rem);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .btn-primary,
+      .btn-secondary,
+      .btn-checkout {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        text-decoration: none;
+        border: 0;
+        border-radius: 12px;
+        font: inherit;
+        font-weight: 900;
+        padding: 14px 18px;
+        transition: 0.25s ease;
+      }
+
+      .btn-primary {
+        background: var(--brand);
+        color: var(--dark);
+        box-shadow: 0 4px 24px rgba(6, 214, 160, 0.25);
+      }
+
+      .btn-primary:hover,
+      .btn-primary:focus {
+        background: var(--brand-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(6, 214, 160, 0.42);
+      }
+
+      .btn-secondary {
+        color: var(--ink);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .btn-secondary:hover,
+      .btn-secondary:focus {
+        border-color: rgba(167, 139, 250, 0.55);
+        transform: translateY(-2px);
+      }
+
+      .btn-checkout {
+        color: #ffffff;
+        background: linear-gradient(90deg, #06d6a0, #7c3aed);
+        box-shadow: 0 4px 24px rgba(124, 58, 237, 0.28);
+      }
+
+      .btn-checkout:hover,
+      .btn-checkout:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 34px rgba(124, 58, 237, 0.42);
+      }
+
+      .trust {
+        margin: 12px 0 0;
+        color: var(--muted-2);
+        font-size: 0.92rem;
       }
 
       .video-panel,
-      .tool-panel {
-        background: var(--surface);
+      .cta-panel,
+      .info-panel,
+      .lesson-panel {
+        background: rgba(22, 22, 42, 0.92);
         border: 1px solid var(--line);
-        border-radius: 8px;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
       }
 
       .video-panel {
         overflow: hidden;
+        box-shadow: var(--glow);
       }
 
       .video-frame {
@@ -104,251 +257,242 @@
       }
 
       .video-copy {
-        padding: 18px;
+        padding: 22px;
       }
 
       .video-copy p {
-        margin: 8px 0 0;
+        margin: 10px 0 0;
       }
 
-      .tool-panel {
-        padding: 18px;
-      }
-
-      .tool-head {
+      .grid-2 {
         display: grid;
-        gap: 8px;
-        margin-bottom: 16px;
+        gap: 18px;
       }
 
-      .tool-head p {
-        margin: 0;
+      .info-panel,
+      .lesson-panel,
+      .cta-panel {
+        padding: 22px;
       }
 
-      .workspace {
+      .list {
+        list-style: none;
+        padding: 0;
+        margin: 18px 0 0;
         display: grid;
-        gap: 16px;
+        gap: 12px;
       }
 
-      .editor,
-      .preview {
-        display: grid;
-        gap: 8px;
-        min-width: 0;
+      .list li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        color: var(--muted);
       }
 
-      label,
-      .preview-title {
-        color: var(--ink);
-        font-weight: 700;
+      .check {
+        color: var(--brand);
+        font-weight: 900;
+        flex: 0 0 auto;
       }
 
-      textarea {
-        width: 100%;
-        min-height: 360px;
-        resize: vertical;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--input);
-        color: var(--ink);
-        font: 0.94rem/1.45 "Courier New", Courier, monospace;
-        padding: 14px;
+      .cta-panel {
+        border-color: rgba(6, 214, 160, 0.22);
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.16), rgba(6, 214, 160, 0.08));
       }
 
-      textarea:focus {
-        outline: 3px solid rgba(124, 58, 237, 0.25);
-        border-color: var(--brand);
-      }
-
-      .actions {
+      .cta-head {
         display: grid;
         gap: 10px;
       }
 
-      button {
-        border: 0;
-        border-radius: 8px;
-        cursor: pointer;
-        font: inherit;
-        font-weight: 700;
-        padding: 13px 16px;
+      .cta-head p {
+        margin: 0;
       }
 
-      .primary {
-        background: var(--brand);
-        color: var(--dark);
-      }
-
-      .primary:hover,
-      .primary:focus {
-        background: var(--brand-dark);
-      }
-
-      .secondary {
-        border: 1px solid var(--line);
-        background: var(--input);
-        color: var(--ink);
-      }
-
-      .preview-frame {
-        width: 100%;
-        min-height: 420px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #ffffff;
+      .actions {
+        margin-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
       }
 
       .note {
-        margin: 8px 0 0;
+        margin: 10px 0 0;
         font-size: 0.92rem;
+        color: var(--muted-2);
+      }
+
+      .footer {
+        text-align: center;
+        color: var(--muted-2);
+        font-size: 0.82rem;
+        padding: 12px 0 0;
       }
 
       @media (min-width: 760px) {
         main {
-          padding: 48px 28px;
+          padding: 36px 28px 58px;
         }
 
-        .actions {
-          grid-template-columns: max-content max-content;
+        .grid-2 {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .info-panel,
+        .lesson-panel,
+        .cta-panel {
+          padding: 28px;
+        }
+
+        .video-copy {
+          padding: 28px;
         }
       }
 
-      @media (min-width: 940px) {
-        .workspace {
-          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-          align-items: start;
+      @media (max-width: 520px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
         }
 
-        textarea,
-        .preview-frame {
-          min-height: 520px;
+        .hero-actions,
+        .actions {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary,
+        .btn-checkout {
+          width: 100%;
         }
       }
     </style>
   </head>
+
   <body>
     <main>
       <div class="page">
-        <header>
-          <p class="eyebrow">Aula gratuita</p>
-          <h1>Crie e teste sua primeira página web com IA.</h1>
+
+        <div class="topbar">
+          <div class="logo">🚀 Página no Ar com IA</div>
+          <a class="top-link" id="top-sales-link" href="https://paginanoarcomia.github.io/pnoarcia/vendas/">
+            Conhecer o curso completo
+          </a>
+        </div>
+
+        <header class="hero">
+          <p class="eyebrow"><span class="dot"></span> Aula gratuita</p>
+
+          <h1>
+            Aprenda a criar uma <span>página de vendas completa</span> usando IA
+          </h1>
+
           <p class="lead">
-            Assista à aula, cole o código HTML recebido da IA e veja o resultado antes de publicar.
+            Nesta aula gratuita, você vai ver como usar inteligência artificial para gerar a estrutura de uma página de vendas, organizar a oferta e transformar suas ideias em uma página pronta para publicar.
+          </p>
+
+          <p class="trust">
+            Aula prática · Sem precisar saber programar · Usando IA como assistente
           </p>
         </header>
 
-        <section class="video-panel" aria-labelledby="titulo-video">
+        <section class="video-panel" id="aula" aria-labelledby="titulo-video">
           <iframe
             class="video-frame"
-            src="https://www.youtube.com/embed/3aeAy3Qs2UA"
-            title="Aula gratuita no YouTube"
+            src="https://www.youtube.com/embed/Y7Zob2gF5fE"
+            title="Aula gratuita - Criando página de vendas completa com IA"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
+            allowfullscreen>
+          </iframe>
+
           <div class="video-copy">
-            <h2 id="titulo-video">Vídeo da aula</h2>
-            <p>Depois da aula, use o campo abaixo para testar o arquivo `index.html` que a IA criar para você.</p>
+            <h2 id="titulo-video">Assista à aula gratuita</h2>
+            <p>
+              Veja o passo a passo para usar IA na criação de uma página de vendas. Depois da aula, você pode seguir para a página do curso completo ou ir direto para a inscrição.
+            </p>
           </div>
         </section>
 
-        <section class="tool-panel" aria-labelledby="titulo-preview">
-          <div class="tool-head">
-            <h2 id="titulo-preview">Teste seu código HTML</h2>
-            <p>Cole o código completo da sua página e atualize o preview.</p>
+        <section class="grid-2" aria-label="Conteúdo da aula">
+          <div class="info-panel">
+            <h2>O que você vai ver nesta aula</h2>
+
+            <ul class="list">
+              <li><span class="check">✓</span> Como usar IA para criar a estrutura de uma página de vendas.</li>
+              <li><span class="check">✓</span> Como organizar promessa, oferta, módulos, bônus e chamada para ação.</li>
+              <li><span class="check">✓</span> Como transformar informações simples em uma página mais profissional.</li>
+              <li><span class="check">✓</span> Como começar mesmo sem saber programar.</li>
+            </ul>
           </div>
 
-          <div class="workspace">
-            <div class="editor">
-              <label for="html-code">Código HTML</label>
-              <textarea id="html-code" spellcheck="false"><!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Minha primeira página</title>
-    <style>
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        background: #0f0f1a;
-        color: #ffffff;
-        font-family: Inter, Arial, Helvetica, sans-serif;
-        text-align: center;
-        padding: 24px;
-      }
+          <div class="lesson-panel">
+            <h2>Depois da aula, o próximo passo é colocar no ar</h2>
 
-      .page {
-        max-width: 620px;
-      }
+            <p>
+              A aula gratuita mostra a criação da página de vendas. No curso completo, você aprende a criar e publicar sua estrutura digital com IA: página de vendas, captura de leads, aula grátis, lista de espera, bio e chatbot.
+            </p>
 
-      h1 {
-        font-size: 2.4rem;
-        line-height: 1;
-      }
+            <ul class="list">
+              <li><span class="check">✓</span> Sem pagar hospedagem.</li>
+              <li><span class="check">✓</span> Sem depender de programador.</li>
+            </ul>
+          </div>
+        </section>
 
-      a {
-        display: inline-block;
-        margin-top: 18px;
-        padding: 13px 18px;
-        border-radius: 8px;
-        background: #06d6a0;
-        color: #0f0f1a;
-        font-weight: 700;
-        text-decoration: none;
-      }
-    </style>
-  </head>
-  <body>
-    <main class="page">
-      <h1>Minha primeira página está no ar.</h1>
-      <p>Troque este texto pela sua oferta, convite ou mensagem principal.</p>
-      <a href="#">Quero saber mais</a>
-    </main>
-  </body>
-</html></textarea>
+        <section class="cta-panel" aria-labelledby="titulo-cta">
+          <div class="cta-head">
+            <p class="eyebrow"><span class="dot"></span> Próximo passo</p>
 
-              <div class="actions">
-                <button class="primary" id="update-preview" type="button">Atualizar preview</button>
-                <button class="secondary" id="clear-code" type="button">Limpar código</button>
-              </div>
-            </div>
+            <h2 id="titulo-cta">
+              Gostou da aula? Escolha como quer continuar.
+            </h2>
 
-            <div class="preview">
-              <div class="preview-title">Preview da página</div>
-              <iframe
-                class="preview-frame"
-                id="preview-frame"
-                title="Preview do código HTML"
-                sandbox=""
-              ></iframe>
-              <p class="note">O preview mostra HTML e CSS. Scripts ficam bloqueados para manter o teste simples.</p>
+            <p>
+              Você pode ver todos os detalhes na página do curso ou ir direto para o checkout da Hotmart para garantir sua inscrição.
+            </p>
+
+            <div class="actions">
+              <a
+                class="btn-primary"
+                id="sales-button"
+                href="https://paginanoarcomia.github.io/pnoarcia/vendas/">
+                Ver página do curso
+              </a>
+
+              <a
+                class="btn-checkout"
+                id="checkout-button"
+                href="https://pay.hotmart.com/Y106281621B"
+                target="_blank"
+                rel="noopener">
+                Quero me inscrever agora →
+              </a>
             </div>
           </div>
         </section>
+
+        <footer class="footer">
+          <p>
+            Página no Ar com IA · Aula gratuita
+          </p>
+        </footer>
+
       </div>
     </main>
 
     <script>
-      const htmlCode = document.querySelector("#html-code");
-      const previewFrame = document.querySelector("#preview-frame");
-      const updateButton = document.querySelector("#update-preview");
-      const clearButton = document.querySelector("#clear-code");
+      // LINKS PRINCIPAIS DA PÁGINA
+      const SALES_PAGE_URL = "https://paginanoarcomia.github.io/pnoarcia/vendas/";
+      const CHECKOUT_URL = "https://pay.hotmart.com/Y106281621B";
 
-      function updatePreview() {
-        previewFrame.srcdoc = htmlCode.value;
-      }
+      // Botões para página de vendas
+      document.querySelector("#top-sales-link").href = SALES_PAGE_URL;
+      document.querySelector("#hero-sales-link").href = SALES_PAGE_URL;
+      document.querySelector("#sales-button").href = SALES_PAGE_URL;
 
-      updateButton.addEventListener("click", updatePreview);
-
-      clearButton.addEventListener("click", function () {
-        htmlCode.value = "";
-        updatePreview();
-        htmlCode.focus();
-      });
-
-      updatePreview();
+      // Botão direto para checkout
+      document.querySelector("#checkout-button").href = CHECKOUT_URL;
     </script>
   </body>
 </html>
