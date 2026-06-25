@@ -258,12 +258,85 @@
         box-shadow: var(--glow);
       }
 
+      .video-wrap {
+        position: relative;
+      }
+
       .video-frame {
         width: 100%;
         aspect-ratio: 16 / 9;
         border: 0;
         display: block;
         background: #111827;
+        position: relative;
+        z-index: 1;
+      }
+
+      .video-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        padding: 18px;
+        border: 0;
+        cursor: pointer;
+        background:
+          linear-gradient(180deg, rgba(15, 15, 26, 0.18), rgba(15, 15, 26, 0.72)),
+          radial-gradient(circle at 50% 40%, rgba(124, 58, 237, 0.18), transparent 28%),
+          url("https://img.youtube.com/vi/Y7Zob2gF5fE/hqdefault.jpg");
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        text-align: center;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+
+      .video-overlay:hover,
+      .video-overlay:focus {
+        transform: scale(1.01);
+      }
+
+      .video-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .video-overlay-card {
+        display: grid;
+        gap: 10px;
+        justify-items: center;
+        max-width: 320px;
+        padding: 18px 20px;
+        border-radius: 20px;
+        background: rgba(15, 15, 26, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(10px);
+      }
+
+      .play-badge {
+        width: 66px;
+        height: 66px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #06d6a0, #7c3aed);
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.08);
+        font-size: 1.3rem;
+        font-weight: 900;
+      }
+
+      .video-overlay strong {
+        font-size: 1.02rem;
+        line-height: 1.2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      }
+
+      .video-overlay span {
+        color: var(--muted);
+        font-size: 0.92rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
       }
 
       .video-copy {
@@ -402,56 +475,67 @@
           <p class="eyebrow"><span class="dot"></span> Aula gratuita</p>
 
           <h1>
-            Aprenda a criar uma <span>página de vendas completa</span> usando IA
+            Crie sua <span>página de vendas com IA</span> sem começar do zero
           </h1>
 
           <p class="lead">
-            Nesta aula gratuita, você vai ver como usar inteligência artificial para gerar a estrutura de uma página de vendas, organizar a oferta e transformar suas ideias em uma página pronta para publicar.
+            Nesta aula gratuita, você vai ver como estruturar sua página com mais rapidez, entender o que realmente importa e sair com um caminho mais claro para colocar sua oferta no ar.
           </p>
 
           <p class="trust">
-            Aula prática · Sem precisar saber programar · Usando IA como assistente
+            Aula prática · Direto ao ponto · Sem precisar saber programar
           </p>
         </header>
 
         <section class="video-panel" id="aula" aria-labelledby="titulo-video">
-          <iframe
-            class="video-frame"
-            src="https://www.youtube.com/embed/Y7Zob2gF5fE"
-            title="Aula gratuita - Criando página de vendas completa com IA"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+          <div class="video-wrap">
+            <iframe
+              class="video-frame"
+              id="video-frame"
+              src="https://www.youtube.com/embed/Y7Zob2gF5fE"
+              title="Aula gratuita - Criando página de vendas completa com IA"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+
+            <button class="video-overlay" id="video-overlay" type="button" aria-label="Clique para iniciar o vídeo">
+              <div class="video-overlay-card">
+                <div class="play-badge">▶</div>
+                <strong>Clique aqui para iniciar o vídeo</strong>
+                <span>Comece a aula gratuita com um toque</span>
+              </div>
+            </button>
+          </div>
 
           <div class="video-copy">
             <h2 id="titulo-video">Assista à aula gratuita</h2>
             <p>
-              Veja o passo a passo para usar IA na criação de uma página de vendas e, se fizer sentido para você, siga direto para a inscrição.
+              Veja na prática como a IA pode ajudar você a transformar uma ideia em uma estrutura pronta. Se quiser seguir com o caminho completo, a inscrição está logo abaixo.
             </p>
           </div>
         </section>
 
         <section class="grid-2" aria-label="Conteúdo da aula">
           <div class="info-panel">
-            <h2>O que você vai ver nesta aula</h2>
+            <h2>O que esta aula vai destravar para você</h2>
 
             <ul class="list">
-              <li><span class="check">✓</span> Como usar IA para criar a estrutura de uma página de vendas.</li>
-              <li><span class="check">✓</span> Como organizar promessa, oferta, módulos, bônus e chamada para ação.</li>
-              <li><span class="check">✓</span> Como transformar informações simples em uma página mais profissional.</li>
-              <li><span class="check">✓</span> Como começar mesmo sem saber programar.</li>
+              <li><span class="check">✓</span> Entender a estrutura de uma página que vende.</li>
+              <li><span class="check">✓</span> Saber o que escrever em promessa, oferta e chamada para ação.</li>
+              <li><span class="check">✓</span> Ganhar velocidade usando IA sem começar do zero.</li>
+              <li><span class="check">✓</span> Ter um caminho claro mesmo sem saber programar.</li>
             </ul>
           </div>
 
           <div class="lesson-panel">
-            <h2>Depois da aula, o próximo passo é colocar no ar</h2>
+            <h2>Quer ir além da aula gratuita?</h2>
 
             <p>
-              A aula gratuita mostra a criação da página de vendas. No curso completo, você aprende a criar e publicar sua estrutura digital com IA: página de vendas, captura de leads, aula grátis, lista de espera, bio e chatbot.
+              No curso completo, você aprende o passo a passo para montar e publicar sua estrutura digital com IA, incluindo página de vendas, captura de leads, aula grátis, lista de espera, bio e chatbot.
             </p>
 
             <ul class="list">
-              <li><span class="check">✓</span> Sem pagar hospedagem.</li>
+              <li><span class="check">✓</span> Mais agilidade para colocar no ar.</li>
               <li><span class="check">✓</span> Sem depender de programador.</li>
             </ul>
           </div>
@@ -462,11 +546,11 @@
             <p class="eyebrow"><span class="dot"></span> Próximo passo</p>
 
             <h2 id="titulo-cta">
-              Curtiu a aula? Garanta sua inscrição e continue agora.
+              Quer continuar com um caminho mais claro?
             </h2>
 
             <p>
-              Entre no curso completo e siga o passo a passo para criar, organizar e colocar sua estrutura no ar com IA.
+              Entre no curso completo e siga o passo a passo para sair da ideia e começar com mais rapidez.
             </p>
 
             <div class="actions">
@@ -476,7 +560,7 @@
                 href="https://pay.hotmart.com/Y106281621B"
                 target="_blank"
                 rel="noopener">
-                Quero garantir minha inscrição →
+                Quero entrar no curso agora →
               </a>
             </div>
           </div>
@@ -497,6 +581,24 @@
 
       // Botão direto para checkout
       document.querySelector("#checkout-button").href = CHECKOUT_URL;
+
+      const videoFrame = document.querySelector("#video-frame");
+      const videoOverlay = document.querySelector("#video-overlay");
+      const baseVideoUrl = "https://www.youtube.com/embed/Y7Zob2gF5fE";
+
+      function startVideo() {
+        if (videoOverlay) {
+          videoOverlay.classList.add("hidden");
+        }
+
+        if (videoFrame) {
+          videoFrame.src = `${baseVideoUrl}?autoplay=1&rel=0`;
+        }
+      }
+
+      if (videoOverlay) {
+        videoOverlay.addEventListener("click", startVideo);
+      }
     </script>
   </body>
 </html>
