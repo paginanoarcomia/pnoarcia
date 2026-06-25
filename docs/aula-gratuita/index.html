@@ -258,85 +258,12 @@
         box-shadow: var(--glow);
       }
 
-      .video-wrap {
-        position: relative;
-      }
-
       .video-frame {
         width: 100%;
         aspect-ratio: 16 / 9;
         border: 0;
         display: block;
         background: #111827;
-        position: relative;
-        z-index: 1;
-      }
-
-      .video-overlay {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        display: grid;
-        place-items: center;
-        padding: 18px;
-        border: 0;
-        cursor: pointer;
-        background:
-          linear-gradient(180deg, rgba(15, 15, 26, 0.18), rgba(15, 15, 26, 0.72)),
-          radial-gradient(circle at 50% 40%, rgba(124, 58, 237, 0.18), transparent 28%),
-          url("https://img.youtube.com/vi/Y7Zob2gF5fE/hqdefault.jpg");
-        background-size: cover;
-        background-position: center;
-        color: #ffffff;
-        text-align: center;
-        transition: opacity 0.25s ease, transform 0.25s ease;
-      }
-
-      .video-overlay:hover,
-      .video-overlay:focus {
-        transform: scale(1.01);
-      }
-
-      .video-overlay.hidden {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .video-overlay-card {
-        display: grid;
-        gap: 10px;
-        justify-items: center;
-        max-width: 320px;
-        padding: 18px 20px;
-        border-radius: 20px;
-        background: rgba(15, 15, 26, 0.72);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-        backdrop-filter: blur(10px);
-      }
-
-      .play-badge {
-        width: 66px;
-        height: 66px;
-        border-radius: 999px;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, #06d6a0, #7c3aed);
-        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.08);
-        font-size: 1.3rem;
-        font-weight: 900;
-      }
-
-      .video-overlay strong {
-        font-size: 1.02rem;
-        line-height: 1.2;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-      }
-
-      .video-overlay span {
-        color: var(--muted);
-        font-size: 0.92rem;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
       }
 
       .video-copy {
@@ -488,24 +415,14 @@
         </header>
 
         <section class="video-panel" id="aula" aria-labelledby="titulo-video">
-          <div class="video-wrap">
-            <iframe
-              class="video-frame"
-              id="video-frame"
-              src="https://www.youtube.com/embed/Y7Zob2gF5fE"
-              title="Aula gratuita - Criando página de vendas completa com IA"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-
-            <button class="video-overlay" id="video-overlay" type="button" aria-label="Clique para iniciar o vídeo">
-              <div class="video-overlay-card">
-                <div class="play-badge">▶</div>
-                <strong>Clique aqui para iniciar o vídeo</strong>
-                <span>Comece a aula gratuita com um toque</span>
-              </div>
-            </button>
-          </div>
+          <iframe
+            class="video-frame"
+            id="video-frame"
+            src="https://www.youtube.com/embed/Y7Zob2gF5fE"
+            title="Aula gratuita - Criando página de vendas completa com IA"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
 
           <div class="video-copy">
             <h2 id="titulo-video">Assista à aula gratuita</h2>
@@ -581,24 +498,6 @@
 
       // Botão direto para checkout
       document.querySelector("#checkout-button").href = CHECKOUT_URL;
-
-      const videoFrame = document.querySelector("#video-frame");
-      const videoOverlay = document.querySelector("#video-overlay");
-      const baseVideoUrl = "https://www.youtube.com/embed/Y7Zob2gF5fE";
-
-      function startVideo() {
-        if (videoOverlay) {
-          videoOverlay.classList.add("hidden");
-        }
-
-        if (videoFrame) {
-          videoFrame.src = `${baseVideoUrl}?autoplay=1&rel=0`;
-        }
-      }
-
-      if (videoOverlay) {
-        videoOverlay.addEventListener("click", startVideo);
-      }
     </script>
   </body>
 </html>
