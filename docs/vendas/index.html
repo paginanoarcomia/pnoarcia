@@ -83,6 +83,7 @@
         .free-class-card p { color: var(--gray-light); }
         .free-class-actions { display: flex; flex-wrap: wrap; gap: 12px; }
         .free-class-actions .btn-primary { padding: 18px 30px; font-size: 17px; }
+        .free-class-link .btn-line { display: inline; }
         .btn-secondary {
             background: rgba(255, 255, 255, 0.04);
             color: var(--white);
@@ -247,6 +248,16 @@
             .solution-box, .final-cta-box { padding: 40px 24px; }
             .module-item { padding: 20px; }
             .mobile-line-break { display: block; }
+            .free-class-actions { width: 100%; }
+            .free-class-actions .btn-primary {
+                width: 100%;
+                padding: 16px 18px;
+                font-size: 16px;
+                line-height: 1.15;
+                white-space: normal;
+                text-align: center;
+            }
+            .free-class-link .btn-line { display: block; }
         }
         @media (max-width: 480px) { .benefits-grid, .pain-grid, .testimonials-grid, .bonus-cards { grid-template-columns: 1fr; } }
     </style>
@@ -274,7 +285,7 @@
                 <h2>Assista à aula gratuita e veja como a IA pode criar uma página para você.</h2>
                 <p>Na aula gratuita, você entende a lógica do método e vê como usar a IA para transformar uma ideia em uma página web publicável.</p>
                 <div class="free-class-actions">
-                    <a href="https://paginanoarcomia.github.io/pnoarcia/aula-gratuita/" class="btn-primary free-class-link">Assistir aula gratuita <span class="arrow">→</span></a>
+                    <a href="https://paginanoarcomia.github.io/pnoarcia/aula-gratuita/" class="btn-primary free-class-link">Assistir aula <span class="btn-line">gratuita</span> <span class="arrow">→</span></a>
                 </div>
             </div>
         </div>
