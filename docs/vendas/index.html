@@ -44,6 +44,8 @@
         .hero h1 .highlight { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--gray-light); max-width: 700px; margin: 0 auto 40px; animation: fadeInUp 0.8s ease 0.4s both; }
         .hero-cta-group { display: flex; flex-direction: column; align-items: center; gap: 16px; animation: fadeInUp 0.8s ease 0.6s both; }
+        .hero-cta-group .btn-primary { padding: 18px 34px; }
+        .hero-cta-group .btn-primary .btn-line { display: inline; }
         .btn-primary, .btn-secondary, .pricing-btn {
             display: inline-flex;
             align-items: center;
@@ -248,6 +250,15 @@
             .solution-box, .final-cta-box { padding: 40px 24px; }
             .module-item { padding: 20px; }
             .mobile-line-break { display: block; }
+            .hero-cta-group .btn-primary {
+                width: 100%;
+                padding: 16px 18px;
+                font-size: 16px;
+                line-height: 1.15;
+                white-space: normal;
+                text-align: center;
+            }
+            .hero-cta-group .btn-primary .btn-line { display: block; }
             .free-class-actions { width: 100%; }
             .free-class-actions .btn-primary {
                 width: 100%;
@@ -278,15 +289,7 @@
             <h1>Crie e publique sua <span class="highlight">estrutura digital completa com IA</span></h1>
             <p class="hero-sub">Aprenda a criar página de vendas, captura de leads, aula grátis, lista de espera, bio e chatbot — sem programar, sem pagar hospedagem e sem ficar preso a uma única página no ar.</p>
             <div class="hero-cta-group">
-                <a href="https://pay.hotmart.com/Y106281621B" class="btn-primary sales-link">Quero começar agora! <span class="arrow">→</span></a>
-            </div>
-            <div class="free-class-card">
-                <span class="section-label">Quer ver antes?</span>
-                <h2>Assista à aula gratuita e veja como a IA pode criar uma página para você.</h2>
-                <p>Na aula gratuita, você entende a lógica do método e vê como usar a IA para transformar uma ideia em uma página web publicável.</p>
-                <div class="free-class-actions">
-                    <a href="https://paginanoarcomia.github.io/pnoarcia/aula-gratuita/" class="btn-primary free-class-link">Assistir aula <span class="btn-line">gratuita</span> <span class="arrow">→</span></a>
-                </div>
+                <a href="https://pay.hotmart.com/Y106281621B" class="btn-primary sales-link">Quero começar <span class="btn-line">agora!</span> <span class="arrow">→</span></a>
             </div>
         </div>
     </section>
@@ -303,6 +306,19 @@
                 <div class="pain-card fade-in"><div class="icon">🧩</div><h3>As ferramentas parecem desconectadas</h3><p>YouTube, Google Drive, Google Sheets, IA podem trabalhar juntos, mas sem um fluxo claro vira confusão.</p></div>
                 <div class="pain-card fade-in"><div class="icon">🔄</div><h3>Editar a página parece impossível</h3><p>Trocar um botão, uma frase, uma cor ou um efeito visual não deveria depender de contratar alguém.</p></div>
                 <div class="pain-card fade-in"><div class="icon">📉</div><h3>Você perde leads por não ter estrutura</h3><p>Sem página de captura, lista de espera e formulário conectado à planilha, muita gente interessada se perde no caminho.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution-section">
+        <div class="container">
+            <div class="free-class-card">
+                <span class="section-label">Quer ver antes?</span>
+                <h2>Assista à aula gratuita e veja como a IA pode criar uma página para você.</h2>
+                <p>Na aula gratuita, você entende a lógica do método e vê como usar a IA para transformar uma ideia em uma página web publicável.</p>
+                <div class="free-class-actions">
+                    <a href="https://paginanoarcomia.github.io/pnoarcia/aula-gratuita/" class="btn-primary free-class-link">Assistir aula <span class="btn-line">gratuita</span> <span class="arrow">→</span></a>
+                </div>
             </div>
         </div>
     </section>
