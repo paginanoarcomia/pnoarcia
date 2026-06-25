@@ -75,7 +75,7 @@
 
       .topbar {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         gap: 16px;
         padding: 14px 0;
@@ -88,17 +88,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-      }
-
-      .top-link {
-        color: var(--muted);
-        text-decoration: none;
-        font-size: 0.92rem;
-        font-weight: 700;
-      }
-
-      .top-link:hover {
-        color: var(--brand);
       }
 
       .hero {
@@ -407,9 +396,6 @@
 
         <div class="topbar">
           <div class="logo">🚀 Página no Ar com IA</div>
-          <a class="top-link" id="top-sales-link" href="https://paginanoarcomia.github.io/pnoarcia/vendas/">
-            Conhecer o curso completo
-          </a>
         </div>
 
         <header class="hero">
@@ -440,7 +426,7 @@
           <div class="video-copy">
             <h2 id="titulo-video">Assista à aula gratuita</h2>
             <p>
-              Veja o passo a passo para usar IA na criação de uma página de vendas. Depois da aula, você pode seguir para a página do curso completo ou ir direto para a inscrição.
+              Veja o passo a passo para usar IA na criação de uma página de vendas e, se fizer sentido para você, siga direto para a inscrição.
             </p>
           </div>
         </section>
@@ -507,12 +493,7 @@
 
     <script>
       // LINKS PRINCIPAIS DA PÁGINA
-      const SALES_PAGE_URL = "https://paginanoarcomia.github.io/pnoarcia/vendas/";
       const CHECKOUT_URL = "https://pay.hotmart.com/Y106281621B";
-
-      // Botões para página de vendas
-      document.querySelector("#top-sales-link").href = SALES_PAGE_URL;
-      document.querySelector("#hero-sales-link").href = SALES_PAGE_URL;
 
       // Botão direto para checkout
       document.querySelector("#checkout-button").href = CHECKOUT_URL;
